@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-card class="example-card" *ngFor="let item of lista;" style="margin: 10px">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Nombre: {{ item.nombre | uppercase }} {{ item.apellido | uppercase}}</mat-card-title>
+            <mat-card-subtitle>Carrera: {{ item.carrera }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]=" item.img " alt="Photo of a Shiba Inu" width="200">
+        <mat-card-content>
+            <p style="margin-bottom:0rem">
+                Edad: {{ item.edad }}
+            </p>
+            <p [ngStyle]="{'color': item.nota < 6 ? 'red' : 'black'}">
+                Nota: {{ item.nota | number:'1.2-2'}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button>Volver</button>
+            <button mat-raised-button color="primary">Detalle</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

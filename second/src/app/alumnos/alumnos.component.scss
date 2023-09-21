@@ -1,0 +1,21 @@
+p {
+    text-align: left;
+    font-weight: 700;
+}
+
+mat-card {
+    width: 400px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin: 0 2px;
+}
+
+mat-card-subtitle {
+    font-size: large;
+}
