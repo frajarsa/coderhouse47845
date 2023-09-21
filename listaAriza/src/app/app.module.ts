@@ -6,6 +6,7 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [AppComponent, AlumnosComponent],
@@ -15,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
