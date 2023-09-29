@@ -28,7 +28,7 @@ export class FormAlumnosComponent {
     ]),
     telefono: new FormControl('', [
       Validators.minLength(9),
-      Validators.maxLength(14),
+      Validators.maxLength(44),
       Validators.required,
     ]),
     curso: new FormControl('', [
