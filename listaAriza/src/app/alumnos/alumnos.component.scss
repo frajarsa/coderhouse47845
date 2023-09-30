@@ -13,8 +13,14 @@ p {
 
 mat-card {
     width: 300px;
-    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.4);
+    box-shadow: 8px 8px 8px 2px rgba(59, 59, 59, 0.4);
 }
+
+mat-card:hover { 
+        border: 1px groove rgb(206, 206, 206); 
+        box-shadow: 8px 8px 8px 2px rgba(59, 59, 59, 0.4); 
+    }
+
 
 .container {
     display: flex;

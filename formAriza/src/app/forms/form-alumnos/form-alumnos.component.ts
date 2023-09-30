@@ -41,4 +41,8 @@ export class FormAlumnosComponent {
     console.log(this.formularioAlumno)
   }
 
+  nombreValidate(evento : Event) {
+console.log(evento)
+  }
+
 }

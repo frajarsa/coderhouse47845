@@ -45,6 +45,11 @@ button {
   margin: 0px;
 }
 
+.button:disabled {
+ background-color: #000;
+ color: #000;
+}
+
 input:focus,
 textarea:focus {
   -moz-box-shadow: none !important;
