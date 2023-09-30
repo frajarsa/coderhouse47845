@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ValidateNumbers } from './validator-numbers';
 
 @Component({
   selector: 'app-form-alumnos',
