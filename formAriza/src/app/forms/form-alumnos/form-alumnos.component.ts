@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidateNumbers } from './validator-numbers';
 
 @Component({
   selector: 'app-form-alumnos',
@@ -10,25 +11,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class FormAlumnosComponent {
   cursos: string[] = ["Angular", "React", "Vue"]
 
-
-  minlen: number = 5;
+  minimo: number = 2
 
   formularioAlumno: FormGroup = new FormGroup({
     nombre: new FormControl('', [
-      Validators.minLength(this.minlen),
       Validators.required,
+      Validators.minLength(this.minimo)
     ]),
     apellido: new FormControl('', [
-      Validators.minLength(this.minlen),
       Validators.required,
+      Validators.minLength(this.minimo),
     ]),
     correo: new FormControl('', [
       Validators.email,
       Validators.required
     ]),
     telefono: new FormControl('', [
-      Validators.minLength(9),
-      Validators.maxLength(44),
+      Validators.minLength(11),
+      Validators.maxLength(15),
+      Validators.pattern(/^[0-9]+$/),
       Validators.required,
     ]),
     curso: new FormControl('', [
@@ -38,11 +39,8 @@ export class FormAlumnosComponent {
   constructor() { }
 
   enviarDatos() {
-    console.log(this.formularioAlumno)
-  }
-
-  nombreValidate(evento : Event) {
-console.log(evento)
+    console.log(this.formularioAlumno.controls)
+    this.formularioAlumno.reset()
   }
 
 }

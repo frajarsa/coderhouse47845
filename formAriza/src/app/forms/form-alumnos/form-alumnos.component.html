@@ -13,16 +13,25 @@
 
                         <div class="form-group col-sm-6 flex-column d-flex"> <label
                                 class="form-control-label px-3">Nombre<span class="text-danger"> *</span></label>
-                            <input type="text" id="fname" name="fname" placeholder="Introduzca su nombre"
-                                formControlName="nombre" (keydown)="nombreValidate($event)" >
-                                <span class="help-block">Nombre erroneo</span>
+                            <input type="text" autocomplete="off" id="fname" name="fname"
+                                placeholder="Introduzca su nombre" formControlName="nombre">
+                            <span class="help-block" *ngIf="formularioAlumno.get('nombre')?.errors?.['required']">Campo
+                                obligatorio</span>
+                            <span class="help-block" *ngIf="formularioAlumno.get('nombre')?.errors?.['minlength']">Debe
+                                tener al menos {{minimo}} caracteres</span>
                         </div>
 
                         <div class="form-group col-sm-6 flex-column d-flex"> <label
                                 class="form-control-label px-3">Apellido<span class="text-danger"> *</span></label>
-                            <input type="text" id="lname" name="lname" placeholder="Introduzca su apellido"
-                                formControlName="apellido">
-                                <span class="help-block">This email address is invalid.</span>
+                            <input type="text" autocomplete="off" id="lname" name="lname"
+                                placeholder="Introduzca su apellido" formControlName="apellido">
+                            <span class="help-block"
+                                *ngIf="formularioAlumno.get('apellido')?.errors?.['required']">Campo obligatorio</span>
+                            <span class="help-block"
+                                *ngIf="formularioAlumno.get('apellido')?.errors?.['minlength']">Debe
+                                tener al menos {{minimo}}
+                                caracteres</span>
+
                         </div>
 
                     </div>
@@ -30,15 +39,30 @@
                     <div class="row justify-content-between text-left">
 
                         <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                class="form-control-label px-3">Correo<span class="text-danger"> *</span></label> 
-                            <input type="text" id="email" name="email" placeholder="" formControlName="correo">
-                            <span class="help-block">This email address is invalid.</span>
+                                class="form-control-label px-3">Correo<span class="text-danger"> *</span></label>
+                            <input type="text" autocomplete="off" id="email" name="email" placeholder=""
+                                formControlName="correo">
+                            <span class="help-block" *ngIf="formularioAlumno.get('correo')?.errors?.['required']">Campo
+                                obligatorio</span>
+                            <span class="help-block" *ngIf="formularioAlumno.get('correo')?.errors?.['email']">El
+                                dato
+                                debe tener forma de email</span>
                         </div>
 
                         <div class="form-group col-sm-6 flex-column d-flex"> <label
                                 class="form-control-label px-3">Teléfono<span class="text-danger"> *</span></label>
-                            <input type="text" id="mob" name="mob" placeholder="" formControlName="telefono">
-                            <span class="help-block">This email address is invalid.</span>
+                            <input type="text" autocomplete="off" id="mob" name="mob" placeholder=""
+                                formControlName="telefono">
+                            <span class="help-block"
+                                *ngIf="formularioAlumno.get('telefono')?.errors?.['required']">Campo
+                                obligatorio</span>
+                            <span class="help-block"
+                                *ngIf="formularioAlumno.get('telefono')?.errors?.['minlength']">Debe tener al menos 11
+                                dígitos</span>
+                            <span class="help-block" *ngIf="formularioAlumno.get('telefono')?.errors?.['maxlength']">No
+                                puede tener más de 15 dígitos</span>
+                            <span class="help-block" *ngIf="formularioAlumno.get('telefono')?.errors?.['pattern']">Debe
+                                tener solo números</span>
                         </div>
 
                     </div>
@@ -48,17 +72,21 @@
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3">Curso<span class="text-danger"> *</span></label>
                             <select class="form-select" aria-label="Default select example" formControlName="curso">
-                                <option selected>Seleccione uno</option>
+                                <option></option>
                                 <option [value]="item" *ngFor="let item of cursos"> {{ item }} </option>
                             </select>
 
                         </div>
-                        <!-- Botón de submit -->
-                        <div class="row justify-content-end">
-                            <div class="dropdown col-sm-6">
-                                <button [disabled]="formularioAlumno.invalid" type="submit"
-                                    class="btn-block btn-primary">Inscribir</button>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+
+                            <!-- Botón de submit -->
+                            <div class="row justify-content-end" id="buttonBox">
+                                <div class="dropdown col-sm-6">
+                                    <button [disabled]="!formularioAlumno.valid" type="submit"
+                                        class="btn-primary">Inscribir</button>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </form>
