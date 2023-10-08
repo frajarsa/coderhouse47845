@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -24,7 +25,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatSidenavModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

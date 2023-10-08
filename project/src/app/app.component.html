@@ -1,8 +1,17 @@
-<app-topbar></app-topbar>
-<app-leftbar></app-leftbar>
+<mat-toolbar>
+  <span>My Application</span>
+</mat-toolbar>
 
-
-
-
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <h3>Menu</h3>
+    <mat-list>
+      <mat-list-item color="accent">Pepper</mat-list-item>
+      <mat-list-item>Salt</mat-list-item>
+      <mat-list-item>Paprika</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content> </mat-sidenav-content>
+</mat-sidenav-container>
 
 <router-outlet></router-outlet>
