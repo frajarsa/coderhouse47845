@@ -7,23 +7,21 @@ import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
 import { TopbarModule } from './menus/topbar/topbar.module';
 import { LeftbarComponent } from './menus/leftbar/leftbar.component';
-import { BrowserAnimationsModule } from './../../node_modules/@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LeftbarComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     TopbarModule,
-    BrowserAnimationsModule
+    LeftbarComponent
   ],
   exports: [
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

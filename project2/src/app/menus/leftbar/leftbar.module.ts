@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '../../../../node_modules/@angular/platf
 
 
 @NgModule({
-  declarations: [LeftbarComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LeftbarComponent
   ],
   exports: [
     LeftbarComponent
