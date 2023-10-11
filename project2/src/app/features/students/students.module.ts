@@ -8,11 +8,14 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    StudentsComponent
+    StudentsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule
+  ],
+  exports: [
+    StudentsComponent,
   ]
 })
 export class StudentsModule { }

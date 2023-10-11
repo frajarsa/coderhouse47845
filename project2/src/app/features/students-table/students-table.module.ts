@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TopbarComponent } from './topbar.component';
+import { StudentsTableComponent } from './students-table.component';
 import { MaterialModule } from 'src/app/material/material.module';
 
 
 
+
+
+
 @NgModule({
-  declarations: [
-    TopbarComponent,
-  ],
+  declarations: [StudentsTableComponent],
   imports: [
     CommonModule,
     MaterialModule
+
   ],
   exports: [
-    TopbarComponent,
+    StudentsTableComponent,
   ]
 })
-export class TopbarModule { }
+export class StudentsTableModule { }

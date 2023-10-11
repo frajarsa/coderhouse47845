@@ -1,6 +1,28 @@
 .example-container {
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid #555;
+  width: 100%;
+  height: 100%;
+  margin: 0.1rem;
+  border: 4px solid #c8c8c8;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-item {
+  padding: 0.5rem 1.5rem;
+}
+
+.nav-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: black;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  color: #9d2727;
+  background-color: #2e6da4;
 }

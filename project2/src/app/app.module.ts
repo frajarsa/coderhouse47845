@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
 import { TopbarModule } from './menus/topbar/topbar.module';
-import { LeftbarComponent } from './menus/leftbar/leftbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { LeftbarModule } from './menus/leftbar/leftbar.module';
+import { StudentsTableModule } from './features/students-table/students-table.module';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { LeftbarComponent } from './menus/leftbar/leftbar.component';
 
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     TopbarModule,
-    LeftbarComponent
+    LeftbarModule,
+    StudentsTableModule
   ],
   exports: [
+
   ],
   providers: [],
   bootstrap: [AppComponent]
