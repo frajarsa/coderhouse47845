@@ -12,17 +12,23 @@
 
 .nav-item {
   padding: 0.5rem 1.5rem;
+  background-color: #c8c8c8;
+  margin: 0 0 1px;
+}
+
+.nav-item:hover {
+  padding: 0.5rem 1.5rem;
+  background-color: #edc0c0;
+  margin: 0 0 1px;
 }
 
 .nav-link {
   color: rgb(255, 255, 255);
   text-decoration: none;
-  background-color: black;
-  padding: 1rem 2rem;
+  padding: 0.7rem 2rem;
   border-radius: 5px;
 }
 
 .nav-link:hover {
-  color: #9d2727;
-  background-color: #2e6da4;
+  color: #000000;
 }
