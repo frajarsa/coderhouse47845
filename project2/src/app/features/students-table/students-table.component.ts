@@ -37,18 +37,18 @@ export class StudentsTableComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openAdd(item: Student) {
-    console.log(item)
+  openAdd() {
+    console.log()
     let _popup = this.dialog.open(EditStudentDialogComponent, {
       width: "60%",
       enterAnimationDuration: "500ms",
       data: {
-        title: "Editar estudiante",
-        valores: item
+        title: "Añadir estudiante",
+
       }
     })
 
-    _popup.afterClosed().subscribe(item => { console.log(item) })
+    _popup.afterClosed().subscribe(item => { item })
   }
 
 }

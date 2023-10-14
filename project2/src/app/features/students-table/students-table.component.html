@@ -3,8 +3,9 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 
 </mat-form-field>
-<button class="nuevoEstudiante" mat-raised-button color="primary"><mat-icon>add</mat-icon>Nuevo estudiante</button>
-<h2 style="text-align: center;">Tabla estudiantes</h2>
+<button (click)="openAdd()" class="nuevoEstudiante" mat-raised-button color="primary"><mat-icon>add</mat-icon>Nuevo
+    estudiante</button>
+<h2 style="text-align: center;">Listado Estudiantes</h2>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -42,8 +43,7 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon"
-                (click)="openAdd(element)">
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button color="warn" aria-label="Example icon button with a home icon">

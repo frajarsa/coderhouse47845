@@ -2,7 +2,7 @@
     <h1 mat-dialog-title>Editar Estudiante</h1>
     <div mat-dialog-content>
         <p>Actualice datos</p>
-        <form [formGroup]="studentForm">
+        <form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
             <mat-grid-list cols="2" rowHeight="4:1">
 
                 <mat-grid-tile>
