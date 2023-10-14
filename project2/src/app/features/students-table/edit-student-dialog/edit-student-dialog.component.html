@@ -1,0 +1,47 @@
+<div style="background-color: lightblue;">
+    <h1 mat-dialog-title>Editar Estudiante</h1>
+    <div mat-dialog-content>
+        <p>Actualice datos</p>
+        <form [formGroup]="studentForm">
+            <mat-grid-list cols="2" rowHeight="4:1">
+
+                <mat-grid-tile>
+                    <mat-form-field class="W-100">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Apellido</mat-label>
+                        <input matInput formControlName="apellido">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>DNI</mat-label>
+                        <input matInput formControlName="dni">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="1" rowHeight="5:1">
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Curso</mat-label>
+                        <input matInput formControlName="curso">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button color="warn" mat-dialog-close>Cancel</button>
+        <button mat-button cdkFocusInitial color="primary" (click)="closeDialog()">Update</button>
+    </div>
+</div>

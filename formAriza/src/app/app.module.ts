@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { FormAlumnosComponent } from './forms/form-alumnos/form-alumnos.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConcatPipe } from './pipes/concat.pipe';
 
 @NgModule({
-  declarations: [AppComponent, FormAlumnosComponent],
+  declarations: [AppComponent, FormAlumnosComponent, ConcatPipe],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
