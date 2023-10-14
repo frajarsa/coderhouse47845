@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsComponent } from './students.component';
 import { RouterModule } from '@angular/router';
+import { StudentsTableModule } from '../students-table/students-table.module';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    StudentsTableModule
   ],
   exports: [
     StudentsComponent,
