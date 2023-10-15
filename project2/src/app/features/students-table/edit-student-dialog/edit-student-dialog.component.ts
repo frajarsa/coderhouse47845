@@ -26,6 +26,7 @@ export class EditStudentDialogComponent implements OnInit {
 
   }
   studentForm = this.fb.group({
+    id: Math.floor(Math.random() * 100000),
     nombre: [this.inputData?.nombre, Validators.required],
     apellido: [this.inputData?.apellido, Validators.required],
     dni: [this.inputData?.dni, Validators.required],
@@ -39,7 +40,9 @@ export class EditStudentDialogComponent implements OnInit {
 
 
   closeDialog() {
+    const estu = this.studentForm.value
     this.ref.close(this.studentForm.value)
+    console.log(this.studentForm.value)
   }
 
 }
