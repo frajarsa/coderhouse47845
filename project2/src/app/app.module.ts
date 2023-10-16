@@ -27,7 +27,7 @@ import { StudentsTableModule } from './features/students-table/students-table.mo
     StudentsTableModule
   ],
   exports: [
-
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

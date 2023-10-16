@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent {
-
+  title: string = "Universidad Eleftheria"
 }
