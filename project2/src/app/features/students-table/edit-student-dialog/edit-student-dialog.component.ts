@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Student } from 'src/app/interfaces/student';
 
 
@@ -10,39 +10,48 @@ import { Student } from 'src/app/interfaces/student';
   styleUrls: ['./edit-student-dialog.component.scss']
 })
 export class EditStudentDialogComponent implements OnInit {
-  inputData?: Student
+
+  studentForm: FormGroup;
+
+
+
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Student,
+    private fb: FormBuilder,
     private ref: MatDialogRef<EditStudentDialogComponent>,
-    private fb: FormBuilder
+    @Inject(MAT_DIALOG_DATA) public data: Student,
   ) {
-    this.inputData = this.data
-    console.log(this.inputData)
+    this.studentForm = fb.group({
+      id: new FormControl(data?.id),
+      nombre: new FormControl(data?.nombre, Validators.required),
+      apellido: new FormControl(data?.apellido, Validators.required),
+      dni: new FormControl(data?.dni, Validators.required),
+      email: new FormControl(data?.email, Validators.required),
+      curso: new FormControl(data?.curso, Validators.required)
+    })
+
 
   }
 
   ngOnInit(): void {
-    console.log(this.inputData)
+    console.log(this.data)
 
   }
-  studentForm = this.fb.group({
-    id: Math.floor(Math.random() * 100000),
-    nombre: [this.inputData?.nombre, Validators.required],
-    apellido: [this.inputData?.apellido, Validators.required],
-    dni: [this.inputData?.dni, Validators.required],
-    email: [this.inputData?.email, [Validators.required, Validators.email]],
-    curso: [this.inputData?.curso, Validators.required],
-  })
 
-  saveStudent() {
-    console.log(this.studentForm.value)
+
+  actualizar() {
+    console.log(this.studentForm.value);
+    this.ref.close(this.studentForm.value);
   }
 
 
   closeDialog() {
-    const estu = this.studentForm.value
     this.ref.close(this.studentForm.value)
-    console.log(this.studentForm.value)
   }
+
+  cursos: any[] = [
+    { nombre: "Angular" },
+    { nombre: "React" },
+    { nombre: "View" }]
 
 }

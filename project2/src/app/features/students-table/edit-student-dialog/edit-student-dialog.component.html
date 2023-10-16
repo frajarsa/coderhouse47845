@@ -2,7 +2,7 @@
     <h1 mat-dialog-title>Editar Estudiante</h1>
     <div mat-dialog-content>
         <p>Actualice datos</p>
-        <form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+        <form [formGroup]="studentForm" (ngSubmit)="actualizar()">
             <mat-grid-list cols="2" rowHeight="4:1">
 
                 <mat-grid-tile>
@@ -34,7 +34,12 @@
                 <mat-grid-tile>
                     <mat-form-field>
                         <mat-label>Curso</mat-label>
-                        <input matInput formControlName="curso">
+                        <mat-select formControlName="curso">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                        <!-- <input matInput formControlName="curso"> -->
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
