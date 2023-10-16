@@ -36,12 +36,10 @@ export class EditStudentDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data.curso)
   }
 
 
   actualizar() {
-    console.log(this.studentForm.value);
     this.ref.close(this.studentForm.value);
   }
 
