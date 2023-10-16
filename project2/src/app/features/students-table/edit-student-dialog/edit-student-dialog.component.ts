@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Student } from 'src/app/interfaces/student';
+import { Curso } from 'src/app/interfaces/curso';
 
 
 @Component({
@@ -25,17 +26,17 @@ export class EditStudentDialogComponent implements OnInit {
       id: new FormControl(data?.id),
       nombre: new FormControl(data?.nombre, Validators.required),
       apellido: new FormControl(data?.apellido, Validators.required),
-      dni: new FormControl(data?.dni, Validators.required),
-      email: new FormControl(data?.email, Validators.required),
+      dni: new FormControl(data?.dni, [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      email: new FormControl(data?.email, [Validators.required, Validators.email]),
       curso: new FormControl(data?.curso, Validators.required)
     })
+
 
 
   }
 
   ngOnInit(): void {
-    console.log(this.data)
-
+    console.log(this.data.curso)
   }
 
 
@@ -49,9 +50,22 @@ export class EditStudentDialogComponent implements OnInit {
     this.ref.close(this.studentForm.value)
   }
 
-  cursos: any[] = [
-    { nombre: "Angular" },
-    { nombre: "React" },
-    { nombre: "View" }]
+
+  cursos: Curso[] = [{
+    nombre: "Angular",
+    clases: 8,
+    categoria: "Front",
+  },
+  {
+    nombre: "React",
+    clases: 7,
+    categoria: "Front",
+  },
+  {
+    nombre: "View",
+    clases: 8,
+    categoria: "Front",
+  },]
+
 
 }

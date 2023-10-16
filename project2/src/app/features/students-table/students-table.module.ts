@@ -6,6 +6,7 @@ import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-d
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ConcatPipe } from 'src/app/pipes/concat.pipe';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -19,6 +20,7 @@ import { ConcatPipe } from 'src/app/pipes/concat.pipe';
     MaterialModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSelectModule
 
   ],
   exports: [
