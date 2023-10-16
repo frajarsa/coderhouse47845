@@ -15,7 +15,7 @@ export class EditStudentDialogComponent implements OnInit {
   studentForm: FormGroup;
 
 
-
+  maxLength: number = 99999999
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +26,7 @@ export class EditStudentDialogComponent implements OnInit {
       id: new FormControl(data?.id),
       nombre: new FormControl(data?.nombre, Validators.required),
       apellido: new FormControl(data?.apellido, Validators.required),
-      dni: new FormControl(data?.dni, [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      dni: new FormControl(data?.dni, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.max(this.maxLength)]),
       email: new FormControl(data?.email, [Validators.required, Validators.email]),
       curso: new FormControl(data?.curso, Validators.required)
     })

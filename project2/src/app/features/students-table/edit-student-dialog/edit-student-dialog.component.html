@@ -1,7 +1,6 @@
 <div style="background-color: lightblue;">
-    <h1 mat-dialog-title>Editar Estudiante</h1>
+    <h1 style="text-align: center; padding-top: 2rem;" mat-dialog-title>Formulario Estudiante</h1>
     <div mat-dialog-content>
-        <p>Actualice datos</p>
         <form [formGroup]="studentForm" (ngSubmit)="actualizar()">
             <mat-grid-list cols="2" rowHeight="4:1">
 
@@ -51,6 +50,10 @@
                             *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['pattern']">
                             Debe tener solo números
                         </mat-hint>
+                        <mat-hint style="color:red"
+                            *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['max']">
+                            No puede tener mas de 8 dígitos
+                        </mat-hint>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -72,8 +75,8 @@
         </form>
     </div>
     <div mat-dialog-actions>
-        <button mat-button color="warn" mat-dialog-close>Cancel</button>
+        <button mat-button color="warn" mat-dialog-close>Cancelar</button>
         <button [disabled]="!studentForm.valid" mat-button cdkFocusInitial color="primary"
-            (click)="closeDialog()">Update</button>
+            (click)="closeDialog()">Enviar</button>
     </div>
 </div>
