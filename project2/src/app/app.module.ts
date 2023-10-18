@@ -10,11 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LeftbarModule } from './menus/leftbar/leftbar.module';
 import { StudentsTableModule } from './features/students-table/students-table.module';
+import { CoursesTableComponent } from './features/courses-table/courses-table.component';
+import { ClassesTableComponent } from './features/classes-table/classes-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    CoursesTableComponent,
+    ClassesTableComponent,
 
   ],
   imports: [

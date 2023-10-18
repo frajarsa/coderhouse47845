@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 
 @NgModule({
   declarations: [
+
     CoursesComponent
   ],
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    MaterialModule
   ]
 })
 export class CoursesModule { }

@@ -1,0 +1,36 @@
+mat-card {
+  background-color: #837777;
+  box-shadow: 0 10px 15px 0 rgba(27, 26, 26, 0.26);
+  border-radius: 4px;
+  margin: 16px;
+}
+
+mat-card-header {
+  padding: 16px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-card-subtitle {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mat-card-content {
+  padding: 16px;
+}
+
+mat-card-actions {
+  padding: 16px;
+  text-align: end;
+}
+
+.mat-card-button {
+  margin-right: 8px;
+}
+
+.card-container {
+}

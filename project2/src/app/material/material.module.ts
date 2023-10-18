@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule, MatCardAvatar } from '@angular/material/card';
 
 
 
@@ -27,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
     CommonModule
   ],
   exports: [
+    MatCardModule,
     MatGridListModule,
     MatChipsModule,
     MatDialogModule,
@@ -38,7 +40,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatMenuModule,
     MatSidenavModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+
   ]
 })
 export class MaterialModule { }
