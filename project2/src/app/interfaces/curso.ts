@@ -1,5 +1,7 @@
 export interface Curso {
-    nombre: string;
-    clases: number;
-    categoria: string;
+    name: string;
+    category: string;
+    number_of_students: number;
+    number_of_classes: number;
+    classes: string[];
 }

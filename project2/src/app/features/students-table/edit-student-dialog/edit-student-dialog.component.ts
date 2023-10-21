@@ -3,6 +3,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Student } from 'src/app/interfaces/student';
 import { Curso } from 'src/app/interfaces/curso';
+import courseData from '../../../../json/cursos.json';
+
+
+const COURSE_DATA: Curso[] = courseData
 
 
 @Component({
@@ -49,21 +53,7 @@ export class EditStudentDialogComponent implements OnInit {
   }
 
 
-  cursos: Curso[] = [{
-    nombre: "Angular",
-    clases: 8,
-    categoria: "Front",
-  },
-  {
-    nombre: "React",
-    clases: 7,
-    categoria: "Front",
-  },
-  {
-    nombre: "View",
-    clases: 8,
-    categoria: "Front",
-  },]
+  cursos: Curso[] = COURSE_DATA
 
 
 }

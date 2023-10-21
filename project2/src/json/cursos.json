@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Angular",
+        "category": "webdev",
+        "number_of_students": 100,
+        "number_of_classes": 20,
+        "classes": [
+            "Introduction to Angular",
+            "Angular Components",
+            "Angular Services",
+            "Angular Routing",
+            "Angular Testing"
+        ]
+    },
+    {
+        "name": "React",
+        "category": "webdev",
+        "number_of_students": 120,
+        "number_of_classes": 25,
+        "classes": [
+            "Introduction to React",
+            "React Components",
+            "React Hooks",
+            "React Router",
+            "React Testing"
+        ]
+    },
+    {
+        "name": "Vue",
+        "category": "webdev",
+        "number_of_students": 150,
+        "number_of_classes": 30,
+        "classes": [
+            "Introduction to Vue.js",
+            "Components",
+            "Data binding",
+            "Routing",
+            "HTTP requests"
+        ]
+    }
+]

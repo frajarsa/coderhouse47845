@@ -3,9 +3,12 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Student } from 'src/app/interfaces/student';
 import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-dialog.component';
-import studentData from '../../../json/alumnos.json'
+import studentData from '../../../json/alumnos.json';
+import courseData from '../../../json/cursos.json';
+import { Curso } from 'src/app/interfaces/curso';
 
 
+const CURSOS_DATA: Curso[] = courseData
 const ELEMENT_DATA: Student[] = studentData
 
 function uniqueID() {
