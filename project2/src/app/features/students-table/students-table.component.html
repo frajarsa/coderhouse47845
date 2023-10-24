@@ -5,7 +5,7 @@
 </mat-form-field>
 <button (click)="agregar()" class="nuevoEstudiante" mat-raised-button color="primary"><mat-icon>add</mat-icon>Nuevo
     estudiante</button>
-
+<h4>Total students {{ long }} </h4>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- ID Column -->
@@ -61,3 +61,7 @@
         <td class="mat-cell" colspan="4">No se encontraron coincidencias con "{{input.value}}"</td>
     </tr>
 </table>
+
+<pre>
+
+</pre>

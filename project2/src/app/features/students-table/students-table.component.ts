@@ -6,13 +6,16 @@ import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-d
 import studentData from '../../../json/alumnos.json';
 import courseData from '../../../json/cursos.json';
 import { Curso } from 'src/app/interfaces/curso';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+import { Observable } from 'rxjs';
 
 
 const CURSOS_DATA: Curso[] = courseData
 const ELEMENT_DATA: Student[] = studentData
 
+
 function uniqueID() {
-  return Math.floor(Math.random() * Date.now())
+  return Math.floor(0.000000321 * Date.now())
 }
 
 @Component({
@@ -22,13 +25,34 @@ function uniqueID() {
 })
 export class StudentsTableComponent implements OnInit {
 
+  alumnosObservable$: Student[] = [];
+
+  long: number = this.alumnosObservable$.length;
+
   displayedColumns: string[] = ['id', 'nombre', 'email', 'dni', 'curso', 'actions'];
+
+  // dataSource$:  Observable<Student[]>;
   dataSource: MatTableDataSource<Student> = new MatTableDataSource(ELEMENT_DATA);
+
+
+
   @ViewChild(MatTable) tabla!: MatTable<Student>;
 
   constructor(
     private dialog: MatDialog,
-  ) { }
+    private alumnosService: AlumnosService,
+  ) {
+    /*  this.alumnosService.loadUsers()
+     this.dataSource = this.alumnosService.get()
+         .subscribe({
+           next: (values) => {
+             console.log(values)
+             this.alumnosObservable$ = values
+             console.log(this.alumnosObservable$)
+   
+           }
+         }) */
+  }
 
   ngOnInit(): void {
   }
@@ -40,7 +64,9 @@ export class StudentsTableComponent implements OnInit {
 
 
   eliminar(element: Student) {
+    // this.alumnosService.eliminar(element)
     this.dataSource.data = this.dataSource.data.filter((estudiante: Student) => estudiante.id != element.id);
+    this.long = this.dataSource.data.length
   }
 
   editar(elemento: Student) {
@@ -71,6 +97,7 @@ export class StudentsTableComponent implements OnInit {
       if (resultado) {
         resultado.id = uniqueID()
         this.dataSource.data.push(resultado);
+        this.long = this.dataSource.data.length
         this.tabla.renderRows();
       }
     })

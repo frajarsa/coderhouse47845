@@ -1,0 +1,6 @@
+<h3>Listado de profesores</h3>
+
+<h4> {{ profesores | json }} </h4>
+<div>
+  <pre *ngFor="let i of profesores"> {{ i.name | json }} </pre>
+</div>
