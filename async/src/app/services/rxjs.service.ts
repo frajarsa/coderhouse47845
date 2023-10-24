@@ -11,13 +11,12 @@ const data = teachers
 })
 export class RxjsService {
 
-
   teachers: Teacher[] = data
 
   teachersObservable: Observable<Teacher[]>;
 
 
-  constructor() {
+  constructor(  ) {
     this.teachersObservable = new Observable<Teacher[]>((suscriptor) => {
       suscriptor.next(this.teachers)
     })
@@ -40,5 +39,8 @@ export class RxjsService {
     return this.teachersObservable
   }
 
+  obtenerProfesoresParaSubscribe() {
+    return this.teachersObservable
+  }
 
 }
