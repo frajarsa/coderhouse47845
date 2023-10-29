@@ -11,14 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LeftbarModule } from './menus/leftbar/leftbar.module';
 import { StudentsTableModule } from './features/students-table/students-table.module';
 import { CoursesTableComponent } from './features/courses-table/courses-table.component';
-import { ClassesTableComponent } from './features/classes-table/classes-table.component';
+import { CoursesTableModule } from 'src/app/features/courses-table/courses-table.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CoursesTableComponent,
-    ClassesTableComponent,
 
   ],
   imports: [
@@ -28,7 +26,8 @@ import { ClassesTableComponent } from './features/classes-table/classes-table.co
     MaterialModule,
     TopbarModule,
     LeftbarModule,
-    StudentsTableModule
+    StudentsTableModule,
+    CoursesTableModule
   ],
   exports: [
     AppComponent

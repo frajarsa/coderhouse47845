@@ -42,16 +42,7 @@ export class StudentsTableComponent implements OnInit {
     private dialog: MatDialog,
     private alumnosService: AlumnosService,
   ) {
-    /*  this.alumnosService.loadUsers()
-     this.dataSource = this.alumnosService.get()
-         .subscribe({
-           next: (values) => {
-             console.log(values)
-             this.alumnosObservable$ = values
-             console.log(this.alumnosObservable$)
    
-           }
-         }) */
   }
 
   ngOnInit(): void {
@@ -103,6 +94,8 @@ export class StudentsTableComponent implements OnInit {
     })
 
   }
-
+ver(data: Element) {
+  console.log(data)
+}
 
 }

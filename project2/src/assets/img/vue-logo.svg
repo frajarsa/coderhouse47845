@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800"
+   height="690"
+   viewBox="0 -17.5 256 220.8"
+   preserveAspectRatio="xMinYMin"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="vue-9-logo-svgrepo-com.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:export-bgcolor="#ffffff00" />
+  <path
+     d="M 0,-17.5 128,203.3 256,-17.5 H 204.8 L 128,114.98 50.56,-17.5 Z"
+     fill="#41b883"
+     id="path2" />
+  <path
+     d="M 50.56,-17.5 128,115.62 204.8,-17.5 H 157.44 L 128,33.7 97.92,-17.5 Z"
+     fill="#35495e"
+     id="path3" />
+</svg>

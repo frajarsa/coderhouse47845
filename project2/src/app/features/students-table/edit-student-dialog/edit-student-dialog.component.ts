@@ -17,8 +17,6 @@ const COURSE_DATA: Curso[] = courseData
 export class EditStudentDialogComponent implements OnInit {
 
   studentForm: FormGroup;
-
-
   maxLength: number = 99999999
 
   constructor(
@@ -26,7 +24,7 @@ export class EditStudentDialogComponent implements OnInit {
     private ref: MatDialogRef<EditStudentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Student,
   ) {
-    this.studentForm = fb.group({
+    this.studentForm = this.fb.group({
       id: new FormControl(data?.id),
       nombre: new FormControl(data?.nombre, Validators.required),
       apellido: new FormControl(data?.apellido, Validators.required),

@@ -1,82 +1,101 @@
-<div style="background-color: lightblue;">
-    <h1 style="text-align: center; padding-top: 2rem;" mat-dialog-title>Formulario Estudiante</h1>
-    <div mat-dialog-content>
-        <form [formGroup]="studentForm" (ngSubmit)="actualizar()">
-            <mat-grid-list cols="2" rowHeight="4:1">
-
-                <mat-grid-tile>
-                    <mat-form-field class="W-100">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="nombre">
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('nombre')?.touched && studentForm.get('nombre')?.errors?.['required']">
-                            Este campo es requerido
-                        </mat-hint>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>Apellido</mat-label>
-                        <input matInput formControlName="apellido">
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('apellido')?.touched && studentForm.get('apellido')?.errors?.['required']">
-                            Este campo es requerido
-                        </mat-hint>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email">
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.errors?.['required']">
-                            Este campo es requerido
-                        </mat-hint>
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('email')?.dirty && studentForm.get('email')?.errors?.['email']">
-                            Debe ser un correo válido
-                        </mat-hint>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>DNI</mat-label>
-                        <input matInput formControlName="dni">
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('dni')?.touched && studentForm.get('dni')?.errors?.['required']">
-                            Este campo es requerido
-                        </mat-hint>
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['pattern']">
-                            Debe tener solo números
-                        </mat-hint>
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['max']">
-                            No puede tener mas de 8 dígitos
-                        </mat-hint>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="1" rowHeight="5:1">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>Curso</mat-label>
-                        <select matNativeControl formControlName="curso">
-                            <option [value]="item.name" *ngFor="let item of cursos"> {{ item.name }} </option>
-                        </select>
-                        <mat-hint style="color:red"
-                            *ngIf="studentForm.get('curso')?.touched && studentForm.get('curso')?.errors?.['required']">
-                            Este campo es requerido
-                        </mat-hint>
-                        <!-- <input matInput formControlName="curso"> -->
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-        </form>
-    </div>
-    <div mat-dialog-actions>
-        <button mat-button color="warn" mat-dialog-close>Cancelar</button>
-        <button [disabled]="!studentForm.valid" mat-button cdkFocusInitial color="primary"
-            (click)="closeDialog()">Enviar</button>
-    </div>
+<div style="background-color: lightblue">
+  <h1 style="text-align: center; padding-top: 2rem" mat-dialog-title>
+    Formulario Estudiante
+  </h1>
+  <div mat-dialog-content>
+    <form [formGroup]="studentForm" (ngSubmit)="actualizar()">
+      <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile>
+          <mat-form-field class="W-100">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" />
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('nombre')?.touched && studentForm.get('nombre')?.errors?.['required']"
+            >
+              Este campo es requerido
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellido" />
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('apellido')?.touched && studentForm.get('apellido')?.errors?.['required']"
+            >
+              Este campo es requerido
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.errors?.['required']"
+            >
+              Este campo es requerido
+            </mat-hint>
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('email')?.dirty && studentForm.get('email')?.errors?.['email']"
+            >
+              Debe ser un correo válido
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni" />
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('dni')?.touched && studentForm.get('dni')?.errors?.['required']"
+            >
+              Este campo es requerido
+            </mat-hint>
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['pattern']"
+            >
+              Debe tener solo números
+            </mat-hint>
+            <mat-hint
+              style="color: red"
+              *ngIf="studentForm.get('dni')?.dirty && studentForm.get('dni')?.errors?.['max']"
+            >
+              No puede tener mas de 8 dígitos
+            </mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="1" rowHeight="5:1">
+        <mat-grid-tile>
+          <mat-form-field appearance="fill">
+            <mat-label>Curso a inscribir</mat-label>
+            <mat-select formControlName="curso">
+              <mat-option *ngFor="let curso of cursos" [value]="curso">
+                {{ curso.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="warn" mat-dialog-close>Cancelar</button>
+    <button
+      [disabled]="!studentForm.valid"
+      mat-button
+      cdkFocusInitial
+      color="primary"
+      (click)="closeDialog()"
+    >
+      Enviar
+    </button>
+  </div>
 </div>

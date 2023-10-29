@@ -7,8 +7,8 @@ import { StudentsTableComponent } from './features/students-table/students-table
 const routes: Routes = [
   { path: 'students', component: StudentsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'classes', loadChildren: () => import('./features/classes/classes.module').then(m => m.ClassesModule) },
   { path: 'courses', loadChildren: () => import('./features/courses/courses.module').then(m => m.CoursesModule) },
+  { path: 'inscripciones', loadChildren: () => import('./features/inscripciones/inscripciones.module').then(m => m.InscripcionesModule) },
 
 
 ];

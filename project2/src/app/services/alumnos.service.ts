@@ -3,7 +3,7 @@ import { Student } from '../interfaces/student';
 import studentData from '../../json/alumnos.json';
 import courseData from '../../json/cursos.json';
 import { Curso } from '../interfaces/curso';
-import { BehaviorSubject, Subject, filter } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 const alumnosData: Student[] = studentData

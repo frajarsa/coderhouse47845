@@ -1,5 +1,4 @@
 export interface Student {
-    type: string;
     id: number;
     nombre: string;
     apellido: string;
