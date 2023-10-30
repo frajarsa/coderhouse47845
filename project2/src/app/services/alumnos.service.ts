@@ -15,6 +15,7 @@ const cursosData: Curso[] = courseData
 })
 
 export class AlumnosService {
+  alumnos: Student[] = studentData
   private elimStudent = new BehaviorSubject<Student[]>([]);
   private studentSubject$ = new BehaviorSubject<Student[]>([]);
   private elimStudent$ = new BehaviorSubject<Student[]>([]);

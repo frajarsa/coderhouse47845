@@ -3,15 +3,11 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Student } from 'src/app/interfaces/student';
 import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-dialog.component';
-import studentData from '../../../json/alumnos.json';
-import courseData from '../../../json/cursos.json';
 import { Curso } from 'src/app/interfaces/curso';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Observable } from 'rxjs';
 
 
-const CURSOS_DATA: Curso[] = courseData
-const ELEMENT_DATA: Student[] = studentData
 
 
 function uniqueID() {
@@ -26,13 +22,9 @@ function uniqueID() {
 export class StudentsTableComponent implements OnInit {
 
   alumnosObservable$: Student[] = [];
-
   long: number = this.alumnosObservable$.length;
-
   displayedColumns: string[] = ['id', 'nombre', 'email', 'dni', 'curso', 'actions'];
-
-  // dataSource$:  Observable<Student[]>;
-  dataSource: MatTableDataSource<Student> = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: MatTableDataSource<Student> = new MatTableDataSource(this.alumnosService.alumnos);
 
 
 
@@ -55,7 +47,6 @@ export class StudentsTableComponent implements OnInit {
 
 
   eliminar(element: Student) {
-    // this.alumnosService.eliminar(element)
     this.dataSource.data = this.dataSource.data.filter((estudiante: Student) => estudiante.id != element.id);
     this.long = this.dataSource.data.length
   }

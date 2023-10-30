@@ -20,4 +20,9 @@ import { CoursesTableComponent } from 'src/app/features/courses-table/courses-ta
     CoursesTableModule
   ]
 })
-export class CoursesModule { }
+export class CoursesModule { 
+
+
+
+
+}
