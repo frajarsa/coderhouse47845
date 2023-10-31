@@ -1,29 +1,28 @@
 <h3>Listado de profesores</h3>
-<hr>     
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <h3>Resultado de promesa desde el constructor</h3>
-             <pre>
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6">
+      <h3>Resultado de promesa desde el constructor</h3>
+      <pre>
                {{ profesoresPromesa | json }}
              </pre>
-             <hr>
-             <button class="btn btn-primary"  (click)="callObservableSubscribed()" >Observable with .subscribe</button>
       <hr>
-      <button class="btn btn-danger"  (click)="callPureObservable()" >call pure observable for async</button>
+      <button class="btn btn-primary" (click)="callObservableSubscribed()">Observable with .subscribe Mayores de
+        30</button>
       <hr>
-          </div>
-          <div class="col-lg-6">
-            <div *ngIf="profesores" >
-              <h5>{{ suscrito }}</h5>
-              <pre *ngFor="let i of profesores"> {{ i | json }} </pre>
-            </div>
-            <div *ngIf="observableConAsync | async">
-              <h5>Listado con Pipe Async</h5>
-              <pre> {{ observableConAsync | async | json }} </pre>
-            </div>
-          
-          </div>
-        </div>
+      <button class="btn btn-danger" (click)="callPureObservable()">call pure observable for async</button>
+      <hr>
+    </div>
+    <div class="col-lg-6">
+      <div *ngIf="profesores">
+        <h5>{{ suscrito }}</h5>"
+        <pre *ngFor="let i of profesores"> {{ i | json }} </pre>
       </div>
-
+      <div *ngIf="observableConAsync | async">
+        <h5>Listado con Pipe Async</h5>
+        <code id="pe"> {{ observableConAsync | async | json }} </code>
+      </div>
+    </div>
+  </div>
+</div>

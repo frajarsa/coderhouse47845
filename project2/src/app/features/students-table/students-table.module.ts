@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ConcatPipe } from 'src/app/pipes/concat.pipe';
 import { MatSelectModule } from '@angular/material/select';
+import { ViewStudentDialogComponent } from './view-student-dialog/view-student-dialog.component';
 
 
 
@@ -14,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
-  declarations: [StudentsTableComponent, EditStudentDialogComponent, ConcatPipe],
+  declarations: [StudentsTableComponent, EditStudentDialogComponent, ConcatPipe, ViewStudentDialogComponent],
   imports: [
     CommonModule,
     MaterialModule,
