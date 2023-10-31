@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Teacher } from '../interfaces/teacher';
 import teachers from '../../json/teachers.json'
-import { Observable } from 'rxjs';
+import { Observable, concatMap, delay, from, map, mergeMap, of, toArray } from 'rxjs';
 
 
 const data = teachers
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RxjsService {
-
+  profesores: Teacher[] = []
+  suscrito = ""
   teachers: Teacher[] = data
 
   teachersObservable: Observable<Teacher[]>;
 
 
-  constructor(  ) {
+  constructor() {
     this.teachersObservable = new Observable<Teacher[]>((suscriptor) => {
       suscriptor.next(this.teachers)
     })
@@ -36,11 +38,24 @@ export class RxjsService {
   }
 
   obtenerObservableProfesores() {
-    return this.teachersObservable
+    this.teachersObservable
+      .pipe(
+        map(data => data.filter(x => x.age > 30))
+      )
+      .subscribe({
+        next: (v) => {
+          this.profesores = v
+        },
+      })
+    return this.profesores
   }
 
   obtenerProfesoresParaSubscribe() {
     return this.teachersObservable
+      .pipe(
+        mergeMap((val) => from(val)),
+        concatMap(val => of(val).pipe(delay(1000))),
+      )
   }
 
 }

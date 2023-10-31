@@ -6,6 +6,7 @@ import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-d
 import { Curso } from 'src/app/interfaces/curso';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Observable } from 'rxjs';
+import { ViewStudentDialogComponent } from './view-student-dialog/view-student-dialog.component';
 
 
 
@@ -34,7 +35,7 @@ export class StudentsTableComponent implements OnInit {
     private dialog: MatDialog,
     private alumnosService: AlumnosService,
   ) {
-   
+
   }
 
   ngOnInit(): void {
@@ -85,8 +86,21 @@ export class StudentsTableComponent implements OnInit {
     })
 
   }
-ver(data: Element) {
-  console.log(data)
-}
+  ver(datos: Element) {
+    const dialogRef = this.dialog.open(ViewStudentDialogComponent, {
+      width: "60%",
+      enterAnimationDuration: "500ms",
+      data: datos
+    });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        const item = this.dataSource.data.find(estudiante => estudiante.id == resultado.id);
+        const index = this.dataSource.data.indexOf(item!);
+        this.dataSource.data[index] = resultado;
+        this.tabla.renderRows();
+      }
+    })
+  }
 
 }

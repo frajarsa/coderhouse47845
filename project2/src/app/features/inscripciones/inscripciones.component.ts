@@ -14,9 +14,8 @@ const CURSOS_DATA: Curso[] = cursosdata;
 export class InscripcionesComponent {
   form!: FormGroup;
   maxLength: number = 99999999;
-  
-  constructor(private fb: FormBuilder) 
-  {
+
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       id: new FormControl(""),
       nombre: new FormControl("", Validators.required),
@@ -29,10 +28,10 @@ export class InscripcionesComponent {
 
   newCourseAndStudent() {
   }
-  
+
   tomarDatos() {
-    console.log("Datos tomados")
+    console.log(this.form.value)
   }
-  
+
   cursos: Curso[] = CURSOS_DATA;
 }
