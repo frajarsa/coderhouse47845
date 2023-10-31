@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditCoursesDialogComponent } from './edit-courses-dialog/edit-courses-dialog.component';
+import { EditCoursesDialogComponent } from '../courses/courses-table/edit-courses-dialog/edit-courses-dialog.component';
 import { CoursesTableComponent } from 'src/app/features/courses-table/courses-table.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +12,9 @@ import { CoursesTableComponent } from 'src/app/features/courses-table/courses-ta
     EditCoursesDialogComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
   ]

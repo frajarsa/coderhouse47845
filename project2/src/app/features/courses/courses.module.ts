@@ -6,12 +6,14 @@ import { CoursesComponent } from './courses.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { CoursesTableModule } from 'src/app/features/courses-table/courses-table.module';
 import { CoursesTableComponent } from 'src/app/features/courses-table/courses-table.component';
+import { ViewCoursesDialogComponent } from './courses-table/view-courses-dialog/view-courses-dialog.component';
 
 
 @NgModule({
   declarations: [
     CoursesTableComponent,
-    CoursesComponent
+    CoursesComponent,
+    ViewCoursesDialogComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,7 @@ import { CoursesTableComponent } from 'src/app/features/courses-table/courses-ta
     CoursesTableModule
   ]
 })
-export class CoursesModule { 
+export class CoursesModule {
 
 
 

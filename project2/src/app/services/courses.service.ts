@@ -16,18 +16,17 @@ const cursosData: Curso[] = courseData
 
 export class CoursesService {
 
-  cursos: Curso[] = cursosData
-  private elimCurso = new BehaviorSubject<Curso[]>([]);
-  private cursoSubject$ = new BehaviorSubject<Curso[]>([]);
-  private elimCurso$ = new BehaviorSubject<Curso[]>([]);
+  cursos: Curso[] = []
+  private cursoSubject$ = new BehaviorSubject<Curso[]>(cursosData);
 
 
-  constructor( ) { }
-  
+  constructor() { }
 
 
-  eliminar (element: Curso) {
-      return this.elimCurso$.next(cursosData.filter((x: Curso) => x.id !== element.id))
+  get(): Curso[] {
+    this.cursoSubject$.subscribe((value) => {
+      this.cursos = value
+    })
+    return this.cursos
   }
-  
 }

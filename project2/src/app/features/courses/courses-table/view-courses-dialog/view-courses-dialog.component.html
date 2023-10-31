@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title> Curso: {{ data.name }} </mat-card-title>
+        <mat-card-subtitle>Categoría: {{ data.category }}</mat-card-subtitle>
+        <mat-card-subtitle>Inicia: {{ data.fechaInicio }}</mat-card-subtitle>
+        <mat-card-subtitle>Finaliza: {{ data.fechaFinal }}</mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content>
+        <p>Nro de clases: {{ data.number_of_classes }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" mat-dialog-close>OK!</button>
+    </mat-card-actions>
+</mat-card>

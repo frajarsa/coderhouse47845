@@ -15,10 +15,8 @@ const cursosData: Curso[] = courseData
 })
 
 export class AlumnosService {
-  alumnos: Student[] = studentData
-  private elimStudent = new BehaviorSubject<Student[]>([]);
-  private studentSubject$ = new BehaviorSubject<Student[]>([]);
-  private elimStudent$ = new BehaviorSubject<Student[]>([]);
+  alumnos: Student[] = []
+  private studentSubject$ = new BehaviorSubject<Student[]>(alumnosData);
 
   loadUsers(): void {
     this.studentSubject$.next(alumnosData)
@@ -27,21 +25,11 @@ export class AlumnosService {
   constructor() { }
 
 
-  get(): Subject<Student[]> {
-    console.log(this.studentSubject$)
-    return this.studentSubject$
-  };
-
-  editar() {
-
-
-  }
-  eliminar(element: Student) {
-    return this.elimStudent$.next(alumnosData.filter((x: Student) => x.id !== element.id))
-  }
-
-  agregar() {
-
+  get(): Student[] {
+    this.studentSubject$.subscribe((value) => {
+      this.alumnos = value
+    })
+    return this.alumnos
   }
 
 }

@@ -15,7 +15,6 @@ const COURSE_DATA: Curso[] = courseData
   styleUrls: ['./edit-student-dialog.component.scss']
 })
 export class EditStudentDialogComponent implements OnInit {
-
   studentForm: FormGroup;
   maxLength: number = 99999999
 
