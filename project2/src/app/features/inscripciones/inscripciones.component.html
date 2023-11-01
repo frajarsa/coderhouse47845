@@ -5,78 +5,47 @@
     <mat-form-field appearance="fill">
       <mat-label> Nombre </mat-label>
       <input matInput formControlName="nombre" />
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('nombre')?.touched && form.get('nombre')?.errors?.['required']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.errors?.['required']">
         Este campo es requerido
-      </mat-hint> </mat-form-field
-    ><br />
+      </mat-hint> </mat-form-field><br />
     <mat-form-field appearance="fill">
       <mat-label> Apellido </mat-label>
       <input matInput formControlName="apellido" />
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('apellido')?.touched && form.get('apellido')?.errors?.['required']"
-      >s
+      <mat-hint style="color: red" *ngIf="form.get('apellido')?.touched && form.get('apellido')?.errors?.['required']">s
         Este campo es requerido
-      </mat-hint> </mat-form-field
-    ><br />
+      </mat-hint> </mat-form-field><br />
     <mat-form-field appearance="fill">
       <mat-label> Correo </mat-label>
       <input matInput formControlName="email" />
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
         Este campo es requerido
       </mat-hint>
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('email')?.dirty && form.get('email')?.errors?.['email']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('email')?.dirty && form.get('email')?.errors?.['email']">
         Debe ser un correo válido
-      </mat-hint> </mat-form-field
-    ><br />
+      </mat-hint> </mat-form-field><br />
     <mat-form-field appearance="fill">
       <mat-label> DNI </mat-label>
       <input matInput formControlName="dni" />
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('dni')?.touched && form.get('dni')?.errors?.['required']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('dni')?.touched && form.get('dni')?.errors?.['required']">
         Este campo es requerido
       </mat-hint>
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('dni')?.dirty && form.get('dni')?.errors?.['pattern']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('dni')?.dirty && form.get('dni')?.errors?.['pattern']">
         Debe tener solo números
       </mat-hint>
-      <mat-hint
-        style="color: red"
-        *ngIf="form.get('dni')?.dirty && form.get('dni')?.errors?.['max']"
-      >
+      <mat-hint style="color: red" *ngIf="form.get('dni')?.dirty && form.get('dni')?.errors?.['max']">
         No puede tener mas de 8 dígitos
-      </mat-hint> </mat-form-field
-    ><br />
+      </mat-hint> </mat-form-field><br />
     <mat-form-field appearance="fill">
       <mat-label>Curso a inscribir</mat-label>
       <mat-select formControlName="curso">
-        <mat-option *ngFor="let curso of cursos" [value]="curso">
+        <mat-option *ngFor="let curso of cursos" [value]="curso.name">
           {{ curso.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <div class="W-100">
       <button mat-stroked-button color="warn" type="button">Cancelar</button>
-      <button
-        mat-stroked-button
-        color="primary"
-        type="submit"
-        [disabled]="!form.valid"
-        (click)="tomarDatos()"
-      >
+      <button mat-stroked-button color="primary" type="submit" [disabled]="!form.valid" (click)="addStudent()">
         Enviar
       </button>
     </div>

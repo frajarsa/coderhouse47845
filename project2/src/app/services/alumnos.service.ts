@@ -3,7 +3,8 @@ import { Student } from '../interfaces/student';
 import studentData from '../../json/alumnos.json';
 import courseData from '../../json/cursos.json';
 import { Curso } from '../interfaces/curso';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, pipe } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 const alumnosData: Student[] = studentData
@@ -22,7 +23,7 @@ export class AlumnosService {
     this.studentSubject$.next(alumnosData)
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
   get(): Student[] {
@@ -30,6 +31,12 @@ export class AlumnosService {
       this.alumnos = value
     })
     return this.alumnos
+  }
+
+  post(element: Student): void {
+    const newStudent = element
+    this.alumnos.push(newStudent)
+    this.loadUsers()
   }
 
 }

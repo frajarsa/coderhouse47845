@@ -10,8 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LeftbarModule } from './menus/leftbar/leftbar.module';
 import { StudentsTableModule } from './features/students-table/students-table.module';
-import { CoursesTableComponent } from './features/courses-table/courses-table.component';
 import { CoursesTableModule } from 'src/app/features/courses-table/courses-table.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { CoursesTableModule } from 'src/app/features/courses-table/courses-table
     TopbarModule,
     LeftbarModule,
     StudentsTableModule,
-    CoursesTableModule
+    CoursesTableModule,
+    HttpClientModule
   ],
   exports: [
     AppComponent
