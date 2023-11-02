@@ -8,9 +8,9 @@
         <mat-grid-tile>
           <mat-form-field appearance="fill">
             <mat-label>Curso</mat-label>
-            <mat-select formControlName="name">
-              <mat-option *ngFor="let curso of courses" [value]="curso">
-                {{ curso }}
+            <mat-select formControlName="name" readonly>
+              <mat-option ng-readonly="true" *ngFor="let curso of courses" [value]="curso.name">
+                {{ curso.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -65,7 +65,7 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile>
+        <!-- <mat-grid-tile>
           <mat-form-field>
             <mat-label>DNI</mat-label>
             <input matInput formControlName="classes" />
@@ -82,7 +82,7 @@
             </mat-hint>
           </mat-form-field>
 
-        </mat-grid-tile>
+        </mat-grid-tile> -->
       </mat-grid-list>
     </form>
   </div>

@@ -15,12 +15,12 @@ import { CoursesService } from '../../../../services/courses.service';
 })
 export class EditCoursesDialogComponent {
   categories: string[] = ["webdev", "datos"]
-  courses: string[] = ["Angular", "React", "Vue", "Power BI"]
+  courses: Curso[] = this.coursesService.get()
   courseForm: FormGroup;
   maxLength: number = 99999999
 
   constructor(
-    private CoursesService: CoursesService,
+    private coursesService: CoursesService,
     private fb: FormBuilder,
     private ref: MatDialogRef<EditCoursesDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Curso,
@@ -38,8 +38,8 @@ export class EditCoursesDialogComponent {
 
     })
 
-    this.courseForm.controls["number_of_students"].disable()
-    this.courseForm.controls["number_of_classes"].disable()
+
+
 
   }
 
