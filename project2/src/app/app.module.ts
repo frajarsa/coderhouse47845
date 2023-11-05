@@ -13,6 +13,10 @@ import { StudentsTableModule } from './features/students-table/students-table.mo
 import { CoursesTableModule } from 'src/app/features/courses-table/courses-table.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms';
+import { DashboardModule } from 'src/app/dashboard/dashboard.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   imports: [
+    FormsModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
@@ -28,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     LeftbarModule,
     StudentsTableModule,
     CoursesTableModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   exports: [
     AppComponent

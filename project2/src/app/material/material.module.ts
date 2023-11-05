@@ -16,6 +16,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule, MatCardAvatar } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 
@@ -30,6 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   exports: [
     MatCardModule,
+    MatProgressSpinnerModule,
     MatGridListModule,
     MatChipsModule,
     MatDialogModule,

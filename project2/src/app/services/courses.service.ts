@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Curso } from '../interfaces/curso';
 import courseData from '../../json/cursos.json';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 
 const cursosData: Curso[] = courseData
