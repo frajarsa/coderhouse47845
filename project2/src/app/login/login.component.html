@@ -1,28 +1,42 @@
 <app-topbar></app-topbar>
 <mat-card class="example-card">
-    <mat-card-header  >
-      <mat-card-title  >Login</mat-card-title>
-    </mat-card-header>
-    <hr>
-    <mat-card-content>
-      <form class="example-form">
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <form [formGroup]="loginForm" class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" name="email">
+              <mat-hint style="color: red"
+                *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+              <mat-hint style="color: red"
+                *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.errors?.['email']">
+                Debe ser un correo válido
+              </mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
           <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-          </mat-form-field></td>
-        </tr></table>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="login()" color="primary">Login</button>
-    </mat-card-actions>
-  </mat-card>
- 
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="pw" name="password">
+              <mat-hint style="color: red"
+                *ngIf="loginForm.get('pw')?.touched && loginForm.get('pw')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+            </mat-form-field></td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="accent" [disabled]="!loginForm.valid">Login</button>
+  </mat-card-actions>
+</mat-card>

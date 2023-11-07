@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 
 })
 export class LeftbarComponent {
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
+  //shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
 }

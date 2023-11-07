@@ -4,6 +4,7 @@ import { StudentsComponent } from './students.component';
 import { RouterModule } from '@angular/router';
 import { StudentsTableModule } from '../students-table/students-table.module';
 import { DelayhideDirective } from 'src/app/directives/delayhide.directive';
+import { StudentsRoutingModule } from './students-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { DelayhideDirective } from 'src/app/directives/delayhide.directive';
     CommonModule,
     RouterModule,
     StudentsTableModule,
-
+    StudentsRoutingModule
   ],
   exports: [
     StudentsComponent,

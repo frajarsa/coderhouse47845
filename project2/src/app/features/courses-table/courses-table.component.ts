@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { EditCoursesDialogComponent } from 'src/app/features/courses/courses-table/edit-courses-dialog/edit-courses-dialog.component';
+import { EditCoursesDialogComponent } from 'src/app/features/courses-table/edit-courses-dialog/edit-courses-dialog.component';
 import { Curso } from 'src/app/interfaces/curso';
 import { CoursesService } from 'src/app/services/courses.service';
-import { ViewCoursesDialogComponent } from '../courses/courses-table/view-courses-dialog/view-courses-dialog.component';
+import { ViewCoursesDialogComponent } from '../courses-table/view-courses-dialog/view-courses-dialog.component';
 
 
 function uniqueID() {
@@ -28,6 +28,7 @@ export class CoursesTableComponent {
   constructor(
     private cursosService: CoursesService,
     private dialog: MatDialog,) {
+
     this.long = this.dataSource.data.length
 
   }

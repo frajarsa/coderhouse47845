@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { LeftbarModule } from 'src/app/menus/leftbar/leftbar.module';
 import { TopbarModule } from 'src/app/menus/topbar/topbar.module';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TopbarModule } from 'src/app/menus/topbar/topbar.module';
     CommonModule,
     DashboardRoutingModule,
     LeftbarModule,
-    TopbarModule
+    TopbarModule,
+    MaterialModule
   ]
 })
 export class DashboardModule { }

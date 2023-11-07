@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -13,24 +15,33 @@ import {Router} from '@angular/router';
 
 export class LoginComponent {
 
-  constructor (private router: Router) {
+  loginForm!: FormGroup;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder,
+  ) {
+    this.loginForm = this.fb.group({
+      email: new FormControl("", [Validators.required, Validators.email]),
+      pw: new FormControl("", Validators.required),
+
+    })
   }
 
 
-password: any= ""
+  pw: any = ""
 
-showSpinner: boolean = true
+  mail: string = ""
 
-username: string= ""
-
-login() : void {
-  if(this.username == 'admin' && this.password == 'admin'){
-   this.router.navigate(["dashboard"]);
-  }else {
-    alert("Invalid credentials");
+  login(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+    } else {
+      this.authService.login()
+      console.log(this.loginForm.value)
+    }
   }
-}
 }
 
 

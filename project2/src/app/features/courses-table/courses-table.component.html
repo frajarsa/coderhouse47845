@@ -5,9 +5,10 @@
 <button (click)="agregar()" class="botonDeNuevo" mat-raised-button color="primary">
   <mat-icon>add</mat-icon>Nuevo Curso
 </button>
-<h4>Total cursos {{ long }}</h4>
+<h4 style="text-align: center;">Total cursos {{ long }}</h4>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
   <!-- ID Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>ID</th>

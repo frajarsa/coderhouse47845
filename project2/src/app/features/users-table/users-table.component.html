@@ -4,8 +4,8 @@
 
 </mat-form-field>
 <button (click)="agregar()" class="botonDeNuevo" mat-raised-button color="primary"><mat-icon>add</mat-icon>Nuevo
-    estudiante</button>
-<h4 style="text-align: center;">Total students {{ long }} </h4>
+    Usuario</button>
+<h4 style="text-align: center;">Total students {{ "long" }} </h4>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- ID Column -->
@@ -16,26 +16,26 @@
 
     <!-- Nombre Column -->
     <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Alumno </th>
-        <td mat-cell *matCellDef="let element"> {{element | concat}} </td>
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <!-- Email Column -->
+    <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef> Apellido </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Dni Column -->
     <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email </th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
-    <!-- Dni Column -->
-    <ng-container matColumnDef="dni">
-        <th mat-header-cell *matHeaderCellDef> DNI </th>
-        <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
-    </ng-container>
-
     <!-- Curso Column -->
-    <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef> Curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.curso}} </td>
+    <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef> Rol </th>
+        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
     </ng-container>
 
     <!-- Actions Column -->
