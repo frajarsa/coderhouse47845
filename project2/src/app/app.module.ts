@@ -20,6 +20,7 @@ import { InscripcionesRoutingModule } from './features/inscripciones/inscripcion
 import { StudentsRoutingModule } from './features/students/students-routing.module';
 import { CoursesRoutingModule } from './features/courses/courses-routing.module';
 import { UsersTableModule } from './features/users-table/users-table.module';
+import { authGuard } from 'src/app/guards/auth.guard';
 
 
 @NgModule({

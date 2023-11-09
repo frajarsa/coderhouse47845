@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { map, pluck } from 'rxjs';
 
 
 @Component({
@@ -14,8 +15,8 @@ import { AuthService } from '../services/auth.service';
 
 
 export class LoginComponent {
-
   loginForm!: FormGroup;
+  validado: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -29,19 +30,19 @@ export class LoginComponent {
     })
   }
 
-
-  pw: any = ""
-
-  mail: string = ""
-
-  login(): void {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-    } else {
-      this.authService.login()
-      console.log(this.loginForm.value)
-    }
+  login() {
+    this.authService.userFound(this.loginForm.get('email')?.value)
+    this.authService.login(this.loginForm.get('email')?.value)
+      .subscribe(
+        (x) => {
+          if (x.length > 0) {
+            this.router.navigate(['/dashboard'])
+          } else {
+            alert("No existe el usuario")
+          }
+        }
+      )
   }
+
+
 }
-
-
