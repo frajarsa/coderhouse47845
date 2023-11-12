@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/users';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Injectable({
@@ -11,20 +11,25 @@ export class UsersService {
   url: string = "http://localhost:3000/users"
 
 
-  usuarios: User[] = []
-
   constructor(
     private http: HttpClient
-  ) {
+  ) {  }
 
+
+  get() {
+    return this.http.get<User[]>("http://localhost:3000/users")
+  }
+
+  post(usuario: User) {
+    return this.http.post<User>(this.url, usuario)
+  }
+
+  put() {
 
   }
-  get(): User[] {
-    this.http.get<User[]>("http://localhost:3000/users").subscribe({
-      next: (res) => this.usuarios = res
-    })
 
-    return this.usuarios
+  delete() {
+
   }
 
 }

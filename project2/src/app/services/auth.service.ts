@@ -27,13 +27,9 @@ export class AuthService {
   }
 
   login(email: string): Observable<User[]> {
-    const params = { email: email };
     const response = this.http.get<User[]>(this.url + "?email=" + email)
     return response
   }
-
-
-
 
   logout(): void {
     this.isAuthenticated = false;
@@ -43,4 +39,3 @@ export class AuthService {
     return this.isAuthenticated;
   }
 }
-

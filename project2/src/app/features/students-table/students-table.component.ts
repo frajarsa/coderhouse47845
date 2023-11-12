@@ -21,9 +21,9 @@ function uniqueID() {
   styleUrls: ['./students-table.component.scss']
 })
 export class StudentsTableComponent implements OnInit {
-  listaDeAlumnos: Student[] = this.alumnosService.get()
+  listaDeAlumnos!: Student[];
   alumnosObservable$: Student[] = [];
-  long: number = this.alumnosObservable$.length;
+  long: number = 0;
   displayedColumns: string[] = ['id', 'nombre', 'email', 'dni', 'curso', 'actions'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource(this.listaDeAlumnos);
 
@@ -39,6 +39,11 @@ export class StudentsTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.alumnosService.get().subscribe( (res) => {
+      this.listaDeAlumnos = res
+      this.dataSource = new MatTableDataSource(this.listaDeAlumnos)
+      this.long = this.listaDeAlumnos.length
+    })
   }
 
   applyFilter(event: Event) {

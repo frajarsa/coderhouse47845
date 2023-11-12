@@ -1,10 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { EditCoursesDialogComponent } from 'src/app/features/courses-table/edit-courses-dialog/edit-courses-dialog.component';
 import { Curso } from 'src/app/interfaces/curso';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ViewCoursesDialogComponent } from '../courses-table/view-courses-dialog/view-courses-dialog.component';
+import { UrlSegment } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 function uniqueID() {
@@ -20,22 +22,35 @@ function uniqueID() {
 
 
 
-export class CoursesTableComponent {
+export class CoursesTableComponent implements OnInit{
+  cursos: Curso[] = []
+  displayedColumns: string[] = ['id', 'nombre', 'categoria', 'fechaInicio', 'fechaFinal', 'actions'];
+  dataSource!: MatTableDataSource<Curso>;
+  @ViewChild(MatTable) tabla!: MatTable<Curso>;
+  
 
-
+  
   long: number = 0
-
+  
   constructor(
     private cursosService: CoursesService,
-    private dialog: MatDialog,) {
+    private dialog: MatDialog,
+    private http :HttpClient) {
+      
+      
+    }
 
-    this.long = this.dataSource.data.length
+    
+    ngOnInit(): void {
+      this.cursosService.get().subscribe( 
+        res => { 
+          this.cursos = res
+          this.dataSource = new MatTableDataSource(this.cursos)
+          this.long = this.cursos.length
 
-  }
-  displayedColumns: string[] = ['id', 'nombre', 'categoria', 'fechaInicio', 'fechaFinal', 'actions'];
-  dataSource: MatTableDataSource<Curso> = new MatTableDataSource(this.cursosService.get());
+        } )
+    }
 
-  @ViewChild(MatTable) tabla!: MatTable<Curso>;
 
 
   editar(elemento: Curso) {
@@ -70,12 +85,13 @@ export class CoursesTableComponent {
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
         resultado.id = uniqueID()
-        this.dataSource.data.push(resultado);
-        this.long = this.dataSource.data.length
-        this.tabla.renderRows();
+        this.cursosService.post(resultado).subscribe( (res) => {
+          this.cursos.push(res)
+          this.dataSource.data = this.cursos;
+          
+        } )
       }
     })
-
   }
   ver(datos: Element) {
     const dialogRef = this.dialog.open(ViewCoursesDialogComponent, {

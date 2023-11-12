@@ -10,22 +10,30 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users-table.component.scss']
 })
 export class UsersTableComponent implements OnInit {
+  long: number = 0
+  dataSource! : MatTableDataSource<User>
   usuarios: User[] = []
+  displayedColumns: string[] = ["nombre", "apellido", "email", "rol", "actions"]
+  //dataSource: MatTableDataSource<User> = new MatTableDataSource()
+  @ViewChild(MatTable) tabla!: MatTable<User>;
+  
+  
+  ngOnInit(): void {
+    this.usersService.get().subscribe((res) => { 
+      this.usuarios = res
+      this.dataSource = new MatTableDataSource(this.usuarios)
+      this.long = this.usuarios.length
 
+    })
+  }
+  
   constructor(
     private usersService: UsersService,
     private dialog: MatDialog
-  ) {
-    this.usuarios = this.usersService.get()
-    console.log(this.usuarios)
-  }
+  ) {}
 
-  ngOnInit(): void {
-  }
 
-  displayedColumns: string[] = ["nombre", "apellido", "email", "rol", "actions"]
-  dataSource: MatTableDataSource<User> = new MatTableDataSource(this.usersService.get());
-  @ViewChild(MatTable) tabla!: MatTable<User>;
+
 
   agregar() {
 

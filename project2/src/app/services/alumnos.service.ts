@@ -3,7 +3,7 @@ import { Student } from '../interfaces/student';
 import studentData from '../../json/alumnos.json';
 import courseData from '../../json/cursos.json';
 import { Curso } from '../interfaces/curso';
-import { BehaviorSubject, Subject, pipe } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -16,6 +16,7 @@ const cursosData: Curso[] = courseData
 })
 
 export class AlumnosService {
+  url: string = 'http://localhost:3000/alumnos/'
   alumnos: Student[] = []
   private studentSubject$ = new BehaviorSubject<Student[]>(alumnosData);
 
@@ -25,12 +26,8 @@ export class AlumnosService {
 
   constructor(private http: HttpClient) { }
 
-
-  get(): Student[] {
-    this.studentSubject$.subscribe((value) => {
-      this.alumnos = value
-    })
-    return this.alumnos
+  get(): Observable<Student[]> {
+    return this.http.get<Student[]>(this.url)
   }
 
   post(element: Student): void {
@@ -38,5 +35,4 @@ export class AlumnosService {
     this.alumnos.push(newStudent)
     this.loadUsers()
   }
-
 }

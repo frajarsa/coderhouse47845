@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Curso } from 'src/app/interfaces/curso';
 import { Student } from 'src/app/interfaces/student';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { CoursesService } from 'src/app/services/courses.service';
-import { LoginComponent } from '../../login/login.component';
 
 
 
@@ -17,18 +15,9 @@ import { LoginComponent } from '../../login/login.component';
   styleUrls: ['./inscripciones.component.scss']
 })
 
-export class InscripcionesComponent {
-
-  newId() {
-    return Math.floor(0.000000321 * Date.now())
-  }
-
-
-
-  cursos: Curso[] = this.coursesService.get()
-  estudiantes: Student[] = this.alumnosService.get()
-
-
+export class InscripcionesComponent implements OnInit {
+  cursos: Curso[] = []
+  estudiantes: Student[] = []
   form!: FormGroup;
   maxLength: number = 99999999;
 
@@ -45,9 +34,25 @@ export class InscripcionesComponent {
       email: new FormControl("", [Validators.required, Validators.email]),
       curso: new FormControl("", Validators.required)
     })
-
-
   }
+  
+  
+  newId() {
+    return Math.floor(0.000000321 * Date.now())
+  }
+  
+  ngOnInit() {
+    this.coursesService.get().subscribe( (res) => this.cursos = res )
+    this.alumnosService.get().subscribe( (res) => this.estudiantes = res )
+  }
+  
+  
+  
+  
+  
+  
+  
+  
 
   newCourseAndStudent() {
 
