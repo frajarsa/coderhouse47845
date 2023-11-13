@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Curso } from '../interfaces/curso';
 import courseData from '../../json/cursos.json';
+<<<<<<< HEAD
 import { BehaviorSubject, Observable, filter, map } from 'rxjs';
+=======
+import { BehaviorSubject, Observable, catchError } from 'rxjs';
+>>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
 import { HttpClient } from '@angular/common/http';
 
 
@@ -16,7 +20,7 @@ const cursosData: Curso[] = courseData
 
 
 export class CoursesService {
-  url:string = "http://localhost:3000/cursos"
+  url: string = "http://localhost:3000/cursos"
 
   cursos: Curso[] = []
   private cursoSubject$ = new BehaviorSubject<Curso[]>(cursosData);
@@ -26,7 +30,11 @@ export class CoursesService {
 
 
   get(): Observable<Curso[]> {
-   return this.http.get<Curso[]>(this.url);
+    return this.http.get<Curso[]>(this.url);
+  }
+
+  getCourse(id: string): Observable<Curso> {
+    return this.http.get<Curso>(`${this.url}/${id}`);
   }
 
   post(curso: Curso): Observable<Curso> {
@@ -38,7 +46,8 @@ export class CoursesService {
     return this.http.put<Curso>(`${this.url}/${curso.id}`, curso)
   }
 
-  delete() {
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
 
   }
 

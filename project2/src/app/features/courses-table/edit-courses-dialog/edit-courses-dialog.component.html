@@ -64,25 +64,6 @@
             <mat-datepicker #pickerFinal></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
-
-        <!-- <mat-grid-tile>
-          <mat-form-field>
-            <mat-label>DNI</mat-label>
-            <input matInput formControlName="classes" />
-            <mat-hint style="color: red"
-              *ngIf="courseForm.get('dni')?.touched && courseForm.get('dni')?.errors?.['required']">
-              Este campo es requerido
-            </mat-hint>
-            <mat-hint style="color: red"
-              *ngIf="courseForm.get('dni')?.dirty && courseForm.get('dni')?.errors?.['pattern']">
-              Debe tener solo números
-            </mat-hint>
-            <mat-hint style="color: red" *ngIf="courseForm.get('dni')?.dirty && courseForm.get('dni')?.errors?.['max']">
-              No puede tener mas de 8 dígitos
-            </mat-hint>
-          </mat-form-field>
-
-        </mat-grid-tile> -->
       </mat-grid-list>
     </form>
   </div>

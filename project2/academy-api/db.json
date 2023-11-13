@@ -112,21 +112,46 @@
       "id": 274635,
       "name": "React",
       "category": "webdev",
+<<<<<<< HEAD
       "number_of_students": "686867868",
+=======
+      "number_of_students": 37,
+>>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
       "number_of_classes": 5,
-      "fechaInicio": "2023-11-30 00:00:00",
-      "fechaFinal": "2024-01-12 00:00:00",
+      "fechaInicio": "2023-11-20 00:00:00",
+      "fechaFinal": "2024-01-18 00:00:00",
+      "classes": [
+        "Introduction to Angular",
+        "Angular Components",
+        "Angular Services",
+        "Angular Routing",
+        "Angular Testing"
+      ]
+    },
+    {
+<<<<<<< HEAD
+      "id": 398675,
+      "name": "Angular",
+=======
+      "id": 3,
+      "name": "React",
+      "category": "webdev",
+      "number_of_students": 30,
+      "number_of_classes": 5,
+      "fechaInicio": "2023-11-20 00:00:00",
+      "fechaFinal": "2024-01-18 00:00:00",
       "classes": [
         "Introduction to React",
         "React Components",
-        "React Hooks",
-        "React Router",
+        "React Services",
+        "React Routing",
         "React Testing"
       ]
     },
     {
-      "id": 398675,
-      "name": "Angular",
+      "id": 4,
+      "name": "Vue",
+>>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
       "category": "webdev",
       "number_of_students": 150,
       "number_of_classes": 5,
@@ -141,6 +166,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "id": 412134,
       "name": "Power BI",
       "category": "datos",
@@ -157,6 +183,8 @@
       ]
     },
     {
+=======
+>>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
       "id": 545645,
       "name": "React",
       "category": "webdev",
