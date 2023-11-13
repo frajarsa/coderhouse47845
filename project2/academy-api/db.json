@@ -112,20 +112,36 @@
       "id": 2,
       "name": "React",
       "category": "webdev",
-      "number_of_students": 120,
+      "number_of_students": 37,
       "number_of_classes": 5,
-      "fechaInicio": "2023-11-30 00:00:00",
-      "fechaFinal": "2024-01-12 00:00:00",
+      "fechaInicio": "2023-11-20 00:00:00",
+      "fechaFinal": "2024-01-18 00:00:00",
       "classes": [
-        "Introduction to React",
-        "React Components",
-        "React Hooks",
-        "React Router",
-        "React Testing"
+        "Introduction to Angular",
+        "Angular Components",
+        "Angular Services",
+        "Angular Routing",
+        "Angular Testing"
       ]
     },
     {
       "id": 3,
+      "name": "React",
+      "category": "webdev",
+      "number_of_students": 30,
+      "number_of_classes": 5,
+      "fechaInicio": "2023-11-20 00:00:00",
+      "fechaFinal": "2024-01-18 00:00:00",
+      "classes": [
+        "Introduction to React",
+        "React Components",
+        "React Services",
+        "React Routing",
+        "React Testing"
+      ]
+    },
+    {
+      "id": 4,
       "name": "Vue",
       "category": "webdev",
       "number_of_students": 150,
@@ -138,22 +154,6 @@
         "Data binding",
         "Routing",
         "HTTP requests"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Power BI",
-      "category": "datos",
-      "number_of_students": 150,
-      "number_of_classes": 5,
-      "fechaInicio": "2023-11-30 00:00:00",
-      "fechaFinal": "2024-02-01 00:00:00",
-      "classes": [
-        "Introduction to Power BI",
-        "Tables",
-        "Reports",
-        "Modeling",
-        "Python and data"
       ]
     },
     {

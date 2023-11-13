@@ -7,6 +7,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 import { ViewCoursesDialogComponent } from '../courses-table/view-courses-dialog/view-courses-dialog.component';
 import { UrlSegment } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ConfirmarBorradoComponent } from './confirmar-borrado/confirmar-borrado.component';
 
 
 function uniqueID() {
@@ -22,34 +23,34 @@ function uniqueID() {
 
 
 
-export class CoursesTableComponent implements OnInit{
+export class CoursesTableComponent implements OnInit {
   cursos: Curso[] = []
   displayedColumns: string[] = ['id', 'nombre', 'categoria', 'fechaInicio', 'fechaFinal', 'actions'];
   dataSource!: MatTableDataSource<Curso>;
   @ViewChild(MatTable) tabla!: MatTable<Curso>;
-  
 
-  
+
+
   long: number = 0
-  
+
   constructor(
     private cursosService: CoursesService,
     private dialog: MatDialog,
-    private http :HttpClient) {
-      
-      
-    }
+    private http: HttpClient) {
 
-    
-    ngOnInit(): void {
-      this.cursosService.get().subscribe( 
-        res => { 
-          this.cursos = res
-          this.dataSource = new MatTableDataSource(this.cursos)
-          this.long = this.cursos.length
 
-        } )
-    }
+  }
+
+
+  ngOnInit(): void {
+    this.cursosService.get().subscribe(
+      res => {
+        this.cursos = res
+        this.dataSource = new MatTableDataSource(this.cursos)
+        this.long = this.cursos.length
+
+      })
+  }
 
 
 
@@ -70,9 +71,20 @@ export class CoursesTableComponent implements OnInit{
     })
   }
 
-  eliminar(element: Curso) {
-    this.dataSource.data = this.dataSource.data.filter((estudiante: Curso) => estudiante.id != element.id);
-    this.long = this.dataSource.data.length
+  eliminar(elemento: Curso) {
+    const dialogRef = this.dialog.open(ConfirmarBorradoComponent, {
+      width: "40%",
+      enterAnimationDuration: "100ms",
+      data: elemento
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      this.cursosService.delete(res).subscribe(() => {
+        console.log(`Hemos borrado el usuario con el id: ${res}`)
+        this.cursosService.get().subscribe((res) => this.dataSource.data = res);
+        this.tabla.renderRows()
+      })
+    })
 
   }
   agregar() {
@@ -85,11 +97,11 @@ export class CoursesTableComponent implements OnInit{
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
         resultado.id = uniqueID()
-        this.cursosService.post(resultado).subscribe( (res) => {
+        this.cursosService.post(resultado).subscribe((res) => {
           this.cursos.push(res)
           this.dataSource.data = this.cursos;
-          
-        } )
+
+        })
       }
     })
   }
