@@ -104,14 +104,7 @@ export class CoursesTableComponent implements OnInit {
         this.cursosService.post(resultado).subscribe((res) => {
           this.cursos.push(res)
           this.dataSource.data = this.cursos;
-<<<<<<< HEAD
-          
-          
-        } )
-=======
-
         })
->>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
       }
     })
   }

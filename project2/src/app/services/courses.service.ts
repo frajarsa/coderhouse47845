@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Curso } from '../interfaces/curso';
 import courseData from '../../json/cursos.json';
-<<<<<<< HEAD
-import { BehaviorSubject, Observable, filter, map } from 'rxjs';
-=======
-import { BehaviorSubject, Observable, catchError } from 'rxjs';
->>>>>>> f8ea9a70b943997fdc7d12cf6f1e45e2702c3266
+import { BehaviorSubject, Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
