@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Curso } from '../interfaces/curso';
 import courseData from '../../json/cursos.json';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, filter, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -29,12 +29,13 @@ export class CoursesService {
    return this.http.get<Curso[]>(this.url);
   }
 
-  post(curso: Curso) {
+  post(curso: Curso): Observable<Curso> {
     return this.http.post<Curso>(this.url, curso)
   }
 
-  put(curso: Curso) {
-    return this.http.put<Curso>(this.url, curso)
+  put(curso: Curso): Observable<Curso> {
+    console.log(curso)
+    return this.http.put<Curso>(`${this.url}/${curso.id}`, curso)
   }
 
   delete() {

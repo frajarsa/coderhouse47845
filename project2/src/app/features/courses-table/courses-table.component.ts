@@ -62,10 +62,14 @@ export class CoursesTableComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        const item = this.dataSource.data.find(estudiante => estudiante.id == resultado.id);
-        const index = this.dataSource.data.indexOf(item!);
-        this.dataSource.data[index] = resultado;
-        this.tabla.renderRows();
+        console.log(resultado)
+        this.cursosService.put(resultado).subscribe( (res) => {
+          const indexToUpdate = res? this.cursos.findIndex( (x) => x.id == res.id) : -1
+          if (indexToUpdate > -1) {
+            this.cursos[indexToUpdate] = res
+            this.dataSource.data = this.cursos
+          } 
+        } )
       }
     })
   }
@@ -88,6 +92,7 @@ export class CoursesTableComponent implements OnInit{
         this.cursosService.post(resultado).subscribe( (res) => {
           this.cursos.push(res)
           this.dataSource.data = this.cursos;
+          
           
         } )
       }
