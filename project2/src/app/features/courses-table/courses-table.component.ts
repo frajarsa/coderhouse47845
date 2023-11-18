@@ -8,6 +8,7 @@ import { ViewCoursesDialogComponent } from '../courses-table/view-courses-dialog
 import { UrlSegment } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ConfirmarBorradoComponent } from './confirmar-borrado/confirmar-borrado.component';
+import { NewCourseDialogComponent } from 'src/app/features/courses-table/new-course-dialog/new-course-dialog.component';
 
 
 function uniqueID() {
@@ -92,7 +93,7 @@ export class CoursesTableComponent implements OnInit {
 
   }
   agregar() {
-    const dialogRef = this.dialog.open(EditCoursesDialogComponent, {
+    const dialogRef = this.dialog.open(NewCourseDialogComponent, {
       width: "60%",
       enterAnimationDuration: "500ms",
 

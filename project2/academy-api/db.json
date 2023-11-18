@@ -93,82 +93,33 @@
   ],
   "cursos": [
     {
-      "id": 123456,
+      "id": 1,
       "name": "Angular",
       "category": "webdev",
-      "number_of_students": 100,
-      "number_of_classes": 5,
       "fechaInicio": "2023-11-20 00:00:00",
-      "fechaFinal": "2024-01-18 00:00:00",
-      "classes": [
-        "Introduction to Angular",
-        "Angular Components",
-        "Angular Services",
-        "Angular Routing",
-        "Angular Testing"
-      ]
+      "fechaFinal": "2024-01-18 00:00:00"
+      
     },
     {
-      "id": 274635,
-      "name": "Angular",
-      "category": "datos",
-      "number_of_students": "686867868",
-      "number_of_classes": 5,
-      "fechaInicio": "2023-11-30 00:00:00",
-      "fechaFinal": "2024-01-12 00:00:00",
-      "classes": [
-        "Introduction to React",
-        "React Components",
-        "React Hooks",
-        "React Router",
-        "React Testing"
-      ]
-    },
-    {
-      "id": 398675,
-      "name": "Angular",
-      "category": "webdev",
-      "number_of_students": 150,
-      "number_of_classes": 5,
-      "fechaInicio": "2023-11-25 00:00:00",
-      "fechaFinal": "2024-01-08 00:00:00",
-      "classes": [
-        "Introduction to Vue.js",
-        "Components",
-        "Data binding",
-        "Routing",
-        "HTTP requests"
-      ]
-    },
-    {
-      "id": 545645,
+      "id": 2,
       "name": "React",
       "category": "webdev",
-      "number_of_students": "99999999999",
-      "number_of_classes": "9999999999999",
-      "fechaInicio": "2023-11-02T03:00:00.000Z",
-      "fechaFinal": "2023-11-12T03:00:00.000Z",
-      "classes": null
+      "fechaInicio": "2023-11-30 00:00:00",
+      "fechaFinal": "2024-01-12 00:00:00"
     },
     {
-      "id": 545666,
-      "name": "Angular",
+      "id": 3,
+      "name": "Vue",
       "category": "webdev",
-      "number_of_students": "576756567",
-      "number_of_classes": "567756756765",
-      "fechaInicio": "2023-11-23T03:00:00.000Z",
-      "fechaFinal": "2023-11-30T03:00:00.000Z",
-      "classes": null
+      "fechaInicio": "2023-11-25 00:00:00",
+      "fechaFinal": "2024-01-08 00:00:00"
     },
     {
-      "id": 545668,
-      "name": "Angular",
-      "category": "datos",
-      "number_of_students": "99999999999",
-      "number_of_classes": "22222222",
-      "fechaInicio": "2023-11-15T03:00:00.000Z",
-      "fechaFinal": "2023-11-21T03:00:00.000Z",
-      "classes": null
+      "id": 4,
+      "name": "PowerBi",
+      "category": "data",
+      "fechaInicio": "2023-11-02T03:00:00.000Z",
+      "fechaFinal": "2023-11-12T03:00:00.000Z"
     }
   ],
   "users": [

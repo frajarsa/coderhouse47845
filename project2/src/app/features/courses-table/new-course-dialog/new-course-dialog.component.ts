@@ -9,15 +9,15 @@ import { CoursesService } from '../../../services/courses.service';
 
 
 @Component({
-  selector: 'app-edit-courses-dialog',
-  templateUrl: './edit-courses-dialog.component.html',
-  styleUrls: ['./edit-courses-dialog.component.scss']
+  selector: 'app-new-course-dialog',
+  templateUrl: './new-course-dialog.component.html',
+  styleUrls: ['./new-course-dialog.component.scss']
 })
-export class EditCoursesDialogComponent implements OnInit {
+export class NewCourseDialogComponent implements OnInit {
   categories: string[] = ["webdev", "datos"]
   selection: string[] = ["Angular", "React", "Vue", "PowerBi"]
   coursesNames: string[] = []
-  courses: Curso[] = [];
+  cursos: Curso[] = [];
 
   courseForm: FormGroup;
   maxLength: number = 99999999
@@ -25,7 +25,7 @@ export class EditCoursesDialogComponent implements OnInit {
   constructor(
     private coursesService: CoursesService,
     private fb: FormBuilder,
-    private ref: MatDialogRef<EditCoursesDialogComponent>,
+    private ref: MatDialogRef<NewCourseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Curso,
   ) {
 
@@ -41,12 +41,7 @@ export class EditCoursesDialogComponent implements OnInit {
 
   ngOnInit() {
       this.coursesService.get().subscribe( (res) => {
-        this.courses = res
-        res.map( (curso) => {
-          const nombre = curso.name
-          this.coursesNames.push(nombre)
-        } )
-        console.log(this.coursesNames)
+        this.cursos = res
       } )
   }
 

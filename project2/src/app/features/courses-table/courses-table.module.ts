@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditCoursesDialogComponent } from './edit-courses-dialog/edit-courses-dialog.component';
 import { ViewCoursesDialogComponent } from './view-courses-dialog/view-courses-dialog.component';
 import { ConfirmarBorradoComponent } from './confirmar-borrado/confirmar-borrado.component';
+import { NewCourseDialogComponent } from './new-course-dialog/new-course-dialog.component';
 
 
 
@@ -12,7 +13,8 @@ import { ConfirmarBorradoComponent } from './confirmar-borrado/confirmar-borrado
   declarations: [
     EditCoursesDialogComponent,
     ViewCoursesDialogComponent,
-    ConfirmarBorradoComponent
+    ConfirmarBorradoComponent,
+    NewCourseDialogComponent
   ],
   imports: [
     CommonModule,
