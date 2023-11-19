@@ -101,7 +101,6 @@ export class CoursesTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        resultado.id = uniqueID()
         this.cursosService.post(resultado).subscribe((res) => {
           this.cursos.push(res)
           this.dataSource.data = this.cursos;

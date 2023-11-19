@@ -4,7 +4,8 @@
     </h1>
     <div mat-dialog-content>
       <form [formGroup]="courseForm" (ngSubmit)="actualizar()">
-        <mat-grid-list cols="3" rowHeight="4:1.5">
+        <mat-grid-list cols="2" rowHeight="4:1">
+
           <mat-grid-tile>
             <mat-form-field appearance="fill">
               <mat-label>Curso</mat-label>
@@ -15,6 +16,7 @@
             </mat-select>
             </mat-form-field>
           </mat-grid-tile>
+
           <mat-grid-tile>
             <mat-form-field>
                <mat-label>Categoria</mat-label>
@@ -25,25 +27,7 @@
             </mat-select>
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Nro. Estudiantes</mat-label>
-              <input matInput formControlName="number_of_students">
-              <mat-hint style="color: red">
-                Campo no editable
-              </mat-hint>
-            </mat-form-field>
-          </mat-grid-tile>
-  
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Número de clases</mat-label>
-              <input matInput formControlName="number_of_classes" readonly>
-              <mat-hint style="color: red">
-                Campo no editable
-              </mat-hint>
-            </mat-form-field>
-          </mat-grid-tile>
+         
   
           <mat-grid-tile>
             <mat-form-field>
