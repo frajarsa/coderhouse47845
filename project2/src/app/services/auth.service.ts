@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
+  private tokenKey = 'auth_token';
   url: string = "http://localhost:3000/users"
-  public isAuthenticated = false;
+  public isAuthenticated : boolean = false
 
   constructor(private http: HttpClient) { }
 
@@ -28,14 +29,28 @@ export class AuthService {
 
   login(email: string): Observable<User[]> {
     const response = this.http.get<User[]>(this.url + "?email=" + email)
+    
+    response.subscribe({
+      next(x) {
+        console.log(x[0].token)
+        localStorage.setItem("autorizacion", x[0].token)
+
+      },
+      error(err) {
+        console.error('something wrong occurred: ' + err);
+      },
+      complete() {
+        console.log('done');
+      },
+    })
     return response
   }
 
   logout(): void {
-    this.isAuthenticated = false;
+    localStorage.removeItem("autorizacion");
   }
 
   getIsAuthenticated(): boolean {
-    return this.isAuthenticated;
+    return !!localStorage.getItem("autorizacion");
   }
 }

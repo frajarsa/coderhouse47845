@@ -33,15 +33,6 @@ export class LoginComponent {
   login() {
     this.authService.userFound(this.loginForm.get('email')?.value)
     this.authService.login(this.loginForm.get('email')?.value)
-      .subscribe(
-        (x) => {
-          if (x.length > 0) {
-            this.router.navigate(['/dashboard'])
-          } else {
-            alert("No existe el usuario")
-          }
-        }
-      )
   }
 
 
