@@ -27,7 +27,7 @@ describe('CoursesTableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should open a dialog when "agregar" is called', () => {
+  it('should open dialog when "agregar" is called', () => {
     // Spy on the openDialog method of the dialogService
     const agregarSpy = spyOn(newCourseDialog, 'actualizar').and.callThrough();
 
