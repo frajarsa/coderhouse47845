@@ -11,12 +11,11 @@
     },
     {
       "id": 5678,
-      "nombre": "Maria",
+      "nombre": "María",
       "apellido": "Lopez",
-      "email": "maria.lopez@example.com",
       "dni": 87654321,
-      "curso": "React",
-      "type": "Estudiante"
+      "email": "maria.lopez@example.com",
+      "curso": "React"
     },
     {
       "id": 9012,

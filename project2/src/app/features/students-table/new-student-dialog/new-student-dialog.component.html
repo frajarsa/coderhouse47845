@@ -63,8 +63,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Curso a inscribir</mat-label>
             <mat-select formControlName="curso">
-              <mat-option *ngFor="let curso of selection" [value]="curso">
-                {{ curso }}
+              <mat-option *ngFor="let item of coursesNames" [value]="">
+                {{ item }}
               </mat-option>
             </mat-select>
           </mat-form-field>

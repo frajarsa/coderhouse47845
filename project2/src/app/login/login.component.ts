@@ -31,8 +31,14 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.userFound(this.loginForm.get('email')?.value)
+    this.authService.userFound(this.loginForm.get('email')?.value) 
     this.authService.login(this.loginForm.get('email')?.value)
+    .subscribe( 
+      (value) => {
+        console.log(value.length)  
+        if(value.length >0)  return true ; return false
+      }
+     )
   }
 
 

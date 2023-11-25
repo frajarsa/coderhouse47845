@@ -5,8 +5,6 @@ import { EditCoursesDialogComponent } from 'src/app/features/courses-table/edit-
 import { Curso } from 'src/app/interfaces/curso';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ViewCoursesDialogComponent } from '../courses-table/view-courses-dialog/view-courses-dialog.component';
-import { UrlSegment } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ConfirmarBorradoComponent } from './confirmar-borrado/confirmar-borrado.component';
 import { NewCourseDialogComponent } from 'src/app/features/courses-table/new-course-dialog/new-course-dialog.component';
 
@@ -21,26 +19,22 @@ function uniqueID() {
   templateUrl: './courses-table.component.html',
   styleUrls: ['./courses-table.component.scss']
 })
-
-
-
 export class CoursesTableComponent implements OnInit {
   cursos: Curso[] = []
-  displayedColumns: string[] = ['id', 'nombre', 'categoria', 'fechaInicio', 'fechaFinal', 'actions'];
+  long: number = 0
+  displayedColumns: string[] = [
+    'id', 
+    'nombre', 
+    'categoria', 
+    'fechaInicio', 
+    'fechaFinal', 
+    'actions'];
   dataSource!: MatTableDataSource<Curso>;
   @ViewChild(MatTable) tabla!: MatTable<Curso>;
-
-
-
-  long: number = 0
-
   constructor(
     private cursosService: CoursesService,
     private dialog: MatDialog,
-    private http: HttpClient) {
-
-
-  }
+    ) {  }
 
 
   ngOnInit(): void {
@@ -49,9 +43,9 @@ export class CoursesTableComponent implements OnInit {
         this.cursos = res
         this.dataSource = new MatTableDataSource(this.cursos)
         this.long = this.cursos.length
-
       })
   }
+
 
 
 
@@ -64,8 +58,8 @@ export class CoursesTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        console.log(resultado)
-        this.cursosService.put(resultado).subscribe( (res) => {
+        this.cursosService.put(resultado)
+        .subscribe( (res) => {
           const indexToUpdate = res? this.cursos.findIndex( (x) => x.id == res.id) : -1
           if (indexToUpdate > -1) {
             this.cursos[indexToUpdate] = res
@@ -85,12 +79,11 @@ export class CoursesTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {
       this.cursosService.delete(res).subscribe(() => {
-        console.log(`Hemos borrado el usuario con el id: ${res}`)
+        console.log(`Hemos borrado el curso con el id: ${res}`)
         this.cursosService.get().subscribe((res) => this.dataSource.data = res);
         this.tabla.renderRows()
       })
     })
-
   }
   agregar() {
     const dialogRef = this.dialog.open(NewCourseDialogComponent, {

@@ -7,19 +7,14 @@ import { HttpClient } from '@angular/common/http';
 
 const cursosData: Curso[] = courseData
 
-
 @Injectable({
   providedIn: 'root'
 })
-
-
-
 
 export class CoursesService {
   url: string = "http://localhost:3000/cursos"
 
   cursos: Curso[] = []
-  private cursoSubject$ = new BehaviorSubject<Curso[]>(cursosData);
 
 
   constructor(private http: HttpClient) { }

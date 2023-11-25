@@ -1,81 +1,91 @@
-import { Component, Input, ViewChild, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Student } from 'src/app/interfaces/student';
 import { EditStudentDialogComponent } from './edit-student-dialog/edit-student-dialog.component';
-import { Curso } from 'src/app/interfaces/curso';
 import { AlumnosService } from 'src/app/services/alumnos.service';
-import { Observable } from 'rxjs';
 import { ViewStudentDialogComponent } from './view-student-dialog/view-student-dialog.component';
-
-
-
+import { ConfirmarBorradoStudentComponent } from 'src/app/features/students-table/confirmar-borrado-student/confirmar-borrado-student.component';
+import { NewStudentDialogComponent } from 'src/app/features/students-table/new-student-dialog/new-student-dialog.component';
 
 function uniqueID() {
-  return Math.floor(0.000000321 * Date.now())
+  return Math.floor(0.000000321 * Date.now());
 }
 
 @Component({
   selector: 'app-students-table',
   templateUrl: './students-table.component.html',
-  styleUrls: ['./students-table.component.scss']
+  styleUrls: ['./students-table.component.scss'],
 })
 export class StudentsTableComponent implements OnInit {
-  listaDeAlumnos!: Student[];
-  alumnosObservable$: Student[] = [];
+  listaDeAlumnos: Student[] = [];
   long: number = 0;
-  displayedColumns: string[] = ['id', 'nombre', 'email', 'dni', 'curso', 'actions'];
-  dataSource: MatTableDataSource<Student> = new MatTableDataSource(this.listaDeAlumnos);
-
-
-
+  displayedColumns: string[] = [
+    'id',
+    'nombre',
+    'email',
+    'dni',
+    'curso',
+    'actions',
+  ];
+  dataSource!: MatTableDataSource<Student>;
   @ViewChild(MatTable) tabla!: MatTable<Student>;
 
   constructor(
     private dialog: MatDialog,
     private alumnosService: AlumnosService,
-  ) {
-    this.long = this.dataSource.data.length
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.alumnosService.get().subscribe( (res) => {
-      this.listaDeAlumnos = res
-      this.dataSource = new MatTableDataSource(this.listaDeAlumnos)
-      this.long = this.listaDeAlumnos.length
-    })
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.alumnosService.get().subscribe(
+      (res) => {
+      this.listaDeAlumnos = res;
+      this.dataSource = new MatTableDataSource(this.listaDeAlumnos);
+      this.long = this.listaDeAlumnos.length;
+    });
   }
 
 
-  eliminar(element: Student) {
-    this.dataSource.data = this.dataSource.data.filter((estudiante: Student) => estudiante.id != element.id);
-    this.long = this.dataSource.data.length
-  }
+
 
   editar(elemento: Student) {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
-      width: "60%",
-      enterAnimationDuration: "500ms",
+      width: '60%',
+      enterAnimationDuration: '500ms',
+      data: elemento,
+    });
+
+    dialogRef.afterClosed().subscribe((resultado) => {
+      if (resultado) {
+        this.alumnosService.put(resultado).subscribe((res) => {
+          const indexToUpdate = res
+            ? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
+          if (indexToUpdate > -1) {
+            this.listaDeAlumnos[indexToUpdate] = res;
+            this.dataSource.data = this.listaDeAlumnos;
+          }
+        });
+      }
+    });
+  }
+
+  eliminar(elemento: Student) {
+    const dialogRef = this.dialog.open(ConfirmarBorradoStudentComponent, {
+      width: "40%",
+      enterAnimationDuration: "100ms",
       data: elemento
     });
 
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado) {
-        const item = this.dataSource.data.find(estudiante => estudiante.id == resultado.id);
-        const index = this.dataSource.data.indexOf(item!);
-        this.dataSource.data[index] = resultado;
-        this.tabla.renderRows();
-      }
+    dialogRef.afterClosed().subscribe(res => {
+      this.alumnosService.delete(res).subscribe(() => {
+        console.log(`Hemos borrado el alumno con el id: ${res}`)
+        this.alumnosService.get().subscribe((res) => this.dataSource.data = res);
+        this.tabla.renderRows()
+      })
     })
   }
-
   agregar() {
-    const dialogRef = this.dialog.open(EditStudentDialogComponent, {
+    const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: "60%",
       enterAnimationDuration: "500ms",
 
@@ -83,13 +93,12 @@ export class StudentsTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        resultado.id = uniqueID()
-        this.dataSource.data.push(resultado);
-        this.long = this.dataSource.data.length
-        this.tabla.renderRows();
+        this.alumnosService.post(resultado).subscribe((res) => {
+          this.listaDeAlumnos.push(res)
+          this.dataSource.data = this.listaDeAlumnos;
+        })
       }
     })
-
   }
   ver(datos: Element) {
     const dialogRef = this.dialog.open(ViewStudentDialogComponent, {
@@ -100,7 +109,7 @@ export class StudentsTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        const item = this.dataSource.data.find(estudiante => estudiante.id == resultado.id);
+        const item = this.dataSource.data.find(course => course.id == resultado.id);
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = resultado;
         this.tabla.renderRows();
@@ -108,4 +117,9 @@ export class StudentsTableComponent implements OnInit {
     })
   }
 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

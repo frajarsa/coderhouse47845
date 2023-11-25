@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ConcatPipe } from 'src/app/pipes/concat.pipe';
 import { MatSelectModule } from '@angular/material/select';
 import { ViewStudentDialogComponent } from './view-student-dialog/view-student-dialog.component';
+import { ConfirmarBorradoStudentComponent } from './confirmar-borrado-student/confirmar-borrado-student.component';
+import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
 
 
 
@@ -15,7 +17,7 @@ import { ViewStudentDialogComponent } from './view-student-dialog/view-student-d
 
 
 @NgModule({
-  declarations: [StudentsTableComponent, EditStudentDialogComponent, ConcatPipe, ViewStudentDialogComponent],
+  declarations: [StudentsTableComponent, EditStudentDialogComponent, ConcatPipe, ViewStudentDialogComponent, ConfirmarBorradoStudentComponent, NewStudentDialogComponent],
   imports: [
     CommonModule,
     MaterialModule,
