@@ -14,7 +14,6 @@ export class UsersTableComponent implements OnInit {
   dataSource! : MatTableDataSource<User>
   usuarios: User[] = []
   displayedColumns: string[] = ["nombre", "apellido", "email", "rol", "actions"]
-  //dataSource: MatTableDataSource<User> = new MatTableDataSource()
   @ViewChild(MatTable) tabla!: MatTable<User>;
   
   
