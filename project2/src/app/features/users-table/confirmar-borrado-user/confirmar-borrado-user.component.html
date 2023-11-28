@@ -1,1 +1,8 @@
-<p>confirmar-borrado-user works!</p>
+<h3>¿Desea borrar este estudiante de la lista? {{ data.name }}{{ data.lastName }} </h3>
+
+<button class="botonDeNuevo" mat-raised-button color="warn" mat-dialog-close>
+    No
+</button>
+<button style="margin: 1rem;" mat-button cdkFocusInitial color="primary" (click)="closeDialogBorrar()">
+    Si
+</button>

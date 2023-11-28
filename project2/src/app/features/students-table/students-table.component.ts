@@ -58,8 +58,7 @@ export class StudentsTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
         this.alumnosService.put(resultado).subscribe((res) => {
-          const indexToUpdate = res
-            ? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
+          const indexToUpdate = res? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
           if (indexToUpdate > -1) {
             this.listaDeAlumnos[indexToUpdate] = res;
             this.dataSource.data = this.listaDeAlumnos;

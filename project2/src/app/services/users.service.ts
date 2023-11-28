@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/users';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -16,20 +16,26 @@ export class UsersService {
   ) {  }
 
 
-  get() {
-    return this.http.get<User[]>("http://localhost:3000/users")
+  get(): Observable<User[]> {
+    return this.http.get<User[]>(this.url);
   }
 
-  post(usuario: User) {
+  getCourse(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
+
+  post(usuario: User): Observable<User> {
     return this.http.post<User>(this.url, usuario)
   }
 
-  put() {
+  delete(id: string): Observable<void> {
+      return this.http.delete<void>(`${this.url}/${id}`);
+  
+    }
 
-  }
-
-  delete() {
-
+  put(usuario: User): Observable<User> {
+    console.log(usuario)
+    return this.http.put<User>(`${this.url}/${usuario.id}`, usuario)
   }
 
 }

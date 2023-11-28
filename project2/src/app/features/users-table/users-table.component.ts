@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ConfirmarBorradoUserComponent } from 'src/app/features/users-table/confirmar-borrado-user/confirmar-borrado-user.component';
+import { EditUserDialogComponent } from 'src/app/features/users-table/edit-user-dialog/edit-user-dialog.component';
+import { NewUserDialogComponent } from 'src/app/features/users-table/new-user-dialog/new-user-dialog.component';
+import { ViewUserDialogComponent } from 'src/app/features/users-table/view-user-dialog/view-user-dialog.component';
 import { User } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -11,12 +15,18 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersTableComponent implements OnInit {
   long: number = 0
-  dataSource! : MatTableDataSource<User>
   usuarios: User[] = []
   displayedColumns: string[] = ["nombre", "apellido", "email", "rol", "actions"]
+
+  dataSource! : MatTableDataSource<User>
   @ViewChild(MatTable) tabla!: MatTable<User>;
   
   
+  constructor(
+    private usersService: UsersService,
+    private dialog: MatDialog
+  ) {}
+
   ngOnInit(): void {
     this.usersService.get().subscribe((res) => { 
       this.usuarios = res
@@ -26,26 +36,77 @@ export class UsersTableComponent implements OnInit {
     })
   }
   
-  constructor(
-    private usersService: UsersService,
-    private dialog: MatDialog
-  ) {}
 
 
 
 
+  editar(elemento: User) {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
+      width: "60%",
+      enterAnimationDuration: "500ms",
+      data: elemento,
+    });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        console.log(resultado)
+        this.usersService.put(resultado).subscribe( (res) => {
+          const indexToUpdate = res? this.usuarios.findIndex( (x) => x.id == res.id) : -1;
+          if (indexToUpdate > -1) {
+            this.usuarios[indexToUpdate] = res
+            this.dataSource.data = this.usuarios
+          } 
+        });
+      }
+    });
+  }
+
+  eliminar(elemento: User) {
+    const dialogRef = this.dialog.open(ConfirmarBorradoUserComponent, {
+      width: "40%",
+      enterAnimationDuration: "100ms",
+      data: elemento
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      this.usersService.delete(res).subscribe(() => {
+        console.log(`Hemos borrado el curso con el id: ${res}`)
+        this.usersService.get().subscribe((res) => this.dataSource.data = res);
+        this.tabla.renderRows()
+      })
+    })
+  }
   agregar() {
+    const dialogRef = this.dialog.open(NewUserDialogComponent, {
+      width: "60%",
+      enterAnimationDuration: "500ms",
 
+    });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        this.usersService.post(resultado).subscribe((res) => {
+          this.usuarios.push(res)
+          this.dataSource.data = this.usuarios;
+        })
+      }
+    })
   }
+  ver(datos: Element) {
+    const dialogRef = this.dialog.open(ViewUserDialogComponent, {
+      width: "60%",
+      enterAnimationDuration: "500ms",
+      data: datos
+    });
 
-  ver(el: Element) {
-
-  }
-  editar(el: Element) {
-
-  }
-  eliminar(el: Element) {
-
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        const item = this.dataSource.data.find(course => course.id == resultado.id);
+        const index = this.dataSource.data.indexOf(item!);
+        this.dataSource.data[index] = resultado;
+        this.tabla.renderRows();
+      }
+    })
   }
 
   applyFilter(event: Event) {

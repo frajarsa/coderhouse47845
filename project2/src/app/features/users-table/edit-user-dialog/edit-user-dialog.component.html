@@ -1,1 +1,73 @@
-<p>edit-user-dialog works!</p>
+<div style="background-color: lightblue">
+    <h1 style="text-align: center; padding-top: 2rem" mat-dialog-title>
+      Formulario Estudiante
+    </h1>
+    <div mat-dialog-content>
+      <form [formGroup]="userForm" (ngSubmit)="actualizar()">
+        <mat-grid-list cols="2" rowHeight="4:1">
+          <mat-grid-tile>
+            <mat-form-field class="W-100">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="nombre" />
+              <mat-hint style="color: red"
+                *ngIf="userForm.get('nombre')?.touched && userForm.get('nombre')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="apellido" />
+              <mat-hint style="color: red"
+                *ngIf="userForm.get('apellido')?.touched && userForm.get('apellido')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-hint style="color: red"
+                *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+              <mat-hint style="color: red"
+                *ngIf="userForm.get('email')?.dirty && userForm.get('email')?.errors?.['email']">
+                Debe ser un correo válido
+              </mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-label>Role</mat-label>
+              <input matInput formControlName="role" />
+              <mat-hint style="color: red"
+                *ngIf="userForm.get('role')?.touched && userForm.get('role')?.errors?.['required']">
+                Este campo es requerido
+              </mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="1" rowHeight="5:1">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill">
+              <mat-label>Rol</mat-label>
+              <mat-select formControlName="role">
+                <mat-option *ngFor="let item of selection" [value]="item">
+                  {{ item }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button color="warn" mat-dialog-close>Cancelar</button>
+      <button [disabled]="!userForm.valid" mat-button cdkFocusInitial color="primary" (click)="closeDialog()">
+        Enviar
+      </button>
+    </div>
+  </div>

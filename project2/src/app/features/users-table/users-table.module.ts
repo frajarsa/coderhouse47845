@@ -6,6 +6,7 @@ import { ViewUserDialogComponent } from './view-user-dialog/view-user-dialog.com
 import { MaterialModule } from 'src/app/material/material.module';
 import { ConfirmarBorradoUserComponent } from './confirmar-borrado-user/confirmar-borrado-user.component';
 import { NewUserDialogComponent } from './new-user-dialog/new-user-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { NewUserDialogComponent } from './new-user-dialog/new-user-dialog.compon
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     UsersTableComponent

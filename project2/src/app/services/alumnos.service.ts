@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../interfaces/student';
-import studentData from '../../json/alumnos.json';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
-const alumnosData: Student[] = studentData
 
 @Injectable({
   providedIn: 'root'
