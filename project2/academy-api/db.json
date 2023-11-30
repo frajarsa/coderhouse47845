@@ -30,10 +30,9 @@
       "id": 2345,
       "nombre": "Ana",
       "apellido": "Rodriguez",
-      "email": "ana.rodriguez@example.com",
       "dni": 10987654,
-      "curso": "React",
-      "type": "Estudiante"
+      "email": "ana.rodriguez@example.com",
+      "curso": "React"
     },
     {
       "id": 6789,
@@ -46,7 +45,7 @@
     },
     {
       "id": 5432,
-      "nombre": "Franciscoasdsaasd",
+      "nombre": "Francisco",
       "apellido": "Martinez",
       "dni": 12111098,
       "email": "francisco.martinez@example.com",
@@ -108,8 +107,9 @@
       "id": 3,
       "name": "Vue",
       "category": "webdev",
-      "fechaInicio": "2023-11-25 00:00:00",
-      "fechaFinal": "2024-01-08 00:00:00"
+      "fechaInicio": "2023-11-29T03:00:00.000Z",
+      "fechaFinal": "2023-12-21T03:00:00.000Z",
+      "classes": null
     },
     {
       "id": 4,
@@ -140,8 +140,8 @@
     {
       "id": 2,
       "email": "w@w",
-      "pw": "5678",
-      "token": "57ty6trgdgdbv67fg46",
+      "pw": "4343",
+      "token": "fgdhjjsnvnvnvjiwi8734",
       "name": "Jose",
       "lastName": "Daal",
       "role": "user"
@@ -151,7 +151,7 @@
       "email": "usuario3@mail.com",
       "pw": "9012",
       "token": "fgdhjjsyuewuibw8wi8734",
-      "name": "Juan",
+      "name": "Francisco",
       "lastName": "Pacheco",
       "role": "user"
     }

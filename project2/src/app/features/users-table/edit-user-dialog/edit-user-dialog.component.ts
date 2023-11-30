@@ -24,9 +24,12 @@ export class EditUserDialogComponent {
   ) 
   {
     this.userForm = this.fb.group({
-      nombre: new FormControl(data?.name, Validators.required),
-      apellido: new FormControl(data?.lastName, Validators.required),
+      id: new FormControl(data?.id),
       email: new FormControl(data?.email, [Validators.required, Validators.email]),
+      pw: new FormControl(data?.pw),
+      token: new FormControl(data?.token),
+      name: new FormControl(data?.name, Validators.required),
+      lastName: new FormControl(data?.lastName, Validators.required),
       role: new FormControl(data?.role, [Validators.required]),
     })
 }
@@ -40,6 +43,7 @@ export class EditUserDialogComponent {
 
 
   actualizar() {
+    console.log(this.userForm.value)
     this.ref.close(this.userForm.value);
   }
 
