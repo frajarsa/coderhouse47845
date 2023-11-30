@@ -6,8 +6,7 @@
       "apellido": "Perez",
       "email": "juan.perez@example.com",
       "dni": 12345678,
-      "curso": "Angular",
-      "type": "Estudiante"
+      "curso": "Angular"
     },
     {
       "id": 5678,
@@ -23,8 +22,7 @@
       "apellido": "Gonzalez",
       "email": "carlos.gonzalez@example.com",
       "dni": 98765432,
-      "curso": "Vue",
-      "type": "Estudiante"
+      "curso": "Vue"
     },
     {
       "id": 2345,
@@ -40,8 +38,7 @@
       "apellido": "Garcia",
       "email": "jose.garcia@example.com",
       "dni": 11109876,
-      "curso": "Angular",
-      "type": "Estudiante"
+      "curso": "Angular"
     },
     {
       "id": 5432,
@@ -57,8 +54,7 @@
       "apellido": "Sanchez",
       "email": "david.sanchez@example.com",
       "dni": 13121110,
-      "curso": "Angular",
-      "type": "Estudiante"
+      "curso": "Angular"
     },
     {
       "id": 1432,
@@ -66,8 +62,7 @@
       "apellido": "Gomez",
       "email": "laura.gomez@example.com",
       "dni": 14131211,
-      "curso": "Angular",
-      "type": "Estudiante"
+      "curso": "Angular"
     },
     {
       "id": 9876,
@@ -75,8 +70,7 @@
       "apellido": "Hernandez",
       "email": "antonio.hernandez@example.com",
       "dni": 15141312,
-      "curso": "React",
-      "type": "Estudiante"
+      "curso": "React"
     },
     {
       "id": 4321,
@@ -84,8 +78,10 @@
       "apellido": "Daguerre",
       "email": "marta.dominguez@example.com",
       "dni": 16151413,
-      "curso": "Vue",
-      "type": "Estudiante"
+      "curso": "Vue"
+    },
+    {
+      "id": 9877
     }
   ],
   "cursos": [

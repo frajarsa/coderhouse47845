@@ -7,8 +7,6 @@ import { CoursesService } from 'src/app/services/courses.service';
 
 
 
-
-
 @Component({
   selector: 'app-inscripciones',
   templateUrl: './inscripciones.component.html',
@@ -16,6 +14,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 })
 
 export class InscripcionesComponent implements OnInit {
+  selection: string[] = ["Vue", "Angular", "React", "PowerBi"]
   cursos: Curso[] = []
   estudiantes: Student[] = []
   form!: FormGroup;
@@ -30,9 +29,9 @@ export class InscripcionesComponent implements OnInit {
       id: new FormControl(""),
       nombre: new FormControl("", Validators.required),
       apellido: new FormControl("", Validators.required),
-      dni: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.max(this.maxLength)]),
       email: new FormControl("", [Validators.required, Validators.email]),
-      curso: new FormControl("", Validators.required)
+      dni: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.max(this.maxLength)]),
+      curso: new FormControl("", Validators.required),
     })
   }
   
@@ -46,21 +45,13 @@ export class InscripcionesComponent implements OnInit {
     this.alumnosService.get().subscribe( (res) => this.estudiantes = res )
   }
   
-  
-  
-  
-  
-  
-  
-  
 
-  newCourseAndStudent() {
+  newCourseAndStudent() {  }
 
-
-  }
 
   addStudent() {
     this.form.get('id')?.setValue(this.newId())
+    console.log(this.form.value)
     this.alumnosService.post(this.form.value)
     this.form.reset()
   }
