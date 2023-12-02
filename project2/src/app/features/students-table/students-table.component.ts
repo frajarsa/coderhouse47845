@@ -46,8 +46,6 @@ export class StudentsTableComponent implements OnInit {
   }
 
 
-
-
   editar(elemento: Student) {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
       width: '60%',

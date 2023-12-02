@@ -4,9 +4,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Student } from 'src/app/interfaces/student';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
-
-
-
 @Component({
   selector: 'app-edit-student-dialog',
   templateUrl: './edit-student-dialog.component.html',
@@ -19,7 +16,6 @@ export class EditStudentDialogComponent implements OnInit {
   maxLength: number = 99999999
 
   
-
   constructor(
     private alumnosService: AlumnosService,
     private fb: FormBuilder,
@@ -36,6 +32,7 @@ export class EditStudentDialogComponent implements OnInit {
       curso: new FormControl(data?.curso, Validators.required)
     })
 }
+
 
   ngOnInit(): void {
     this.alumnosService.get().subscribe(

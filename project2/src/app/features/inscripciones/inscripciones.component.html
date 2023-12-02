@@ -2,18 +2,24 @@
   <h1>Formulario de inscripción</h1>
   <hr />
   <form [formGroup]="form">
+
+    <!-- Campo Nombre -->
     <mat-form-field appearance="fill">
       <mat-label> Nombre </mat-label>
       <input matInput formControlName="nombre" />
       <mat-hint style="color: red" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.errors?.['required']">
         Este campo es requerido
       </mat-hint> </mat-form-field><br />
+
+      <!-- Campo Apellido -->
     <mat-form-field appearance="fill">
       <mat-label> Apellido </mat-label>
       <input matInput formControlName="apellido" />
       <mat-hint style="color: red" *ngIf="form.get('apellido')?.touched && form.get('apellido')?.errors?.['required']">s
         Este campo es requerido
       </mat-hint> </mat-form-field><br />
+
+      <!-- Campo Email -->
     <mat-form-field appearance="fill">
       <mat-label> Correo </mat-label>
       <input matInput formControlName="email" />
@@ -23,6 +29,8 @@
       <mat-hint style="color: red" *ngIf="form.get('email')?.dirty && form.get('email')?.errors?.['email']">
         Debe ser un correo válido
       </mat-hint> </mat-form-field><br />
+
+      <!-- Campo DNI -->
     <mat-form-field appearance="fill">
       <mat-label> DNI </mat-label>
       <input matInput formControlName="dni" />
@@ -35,11 +43,13 @@
       <mat-hint style="color: red" *ngIf="form.get('dni')?.dirty && form.get('dni')?.errors?.['max']">
         No puede tener mas de 8 dígitos
       </mat-hint> </mat-form-field><br />
+
+      <!-- Campo Curso Select -->
     <mat-form-field appearance="fill">
       <mat-label>Curso a inscribir</mat-label>
       <mat-select formControlName="curso">
-        <mat-option *ngFor="let curso of cursos" [value]="curso.name">
-          {{ curso.name }}
+        <mat-option *ngFor="let item of selection" [value]="item">
+          {{ item }}
         </mat-option>
       </mat-select>
     </mat-form-field>

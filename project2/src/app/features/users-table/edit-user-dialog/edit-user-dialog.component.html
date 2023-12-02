@@ -1,30 +1,38 @@
 <div style="background-color: lightblue">
     <h1 style="text-align: center; padding-top: 2rem" mat-dialog-title>
-      Formulario Estudiante
+      Formulario Usuario
     </h1>
     <div mat-dialog-content>
+
       <form [formGroup]="userForm" (ngSubmit)="actualizar()">
+
         <mat-grid-list cols="2" rowHeight="4:1">
+
+          <!-- Box Nombre -->
           <mat-grid-tile>
             <mat-form-field class="W-100">
               <mat-label>Nombre</mat-label>
-              <input matInput formControlName="nombre" />
+              <input matInput formControlName="name" />
               <mat-hint style="color: red"
                 *ngIf="userForm.get('nombre')?.touched && userForm.get('nombre')?.errors?.['required']">
                 Este campo es requerido
               </mat-hint>
             </mat-form-field>
           </mat-grid-tile>
+
+          <!-- Box Apellido -->
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Apellido</mat-label>
-              <input matInput formControlName="apellido" />
+              <input matInput formControlName="lastName" />
               <mat-hint style="color: red"
                 *ngIf="userForm.get('apellido')?.touched && userForm.get('apellido')?.errors?.['required']">
                 Este campo es requerido
               </mat-hint>
             </mat-form-field>
           </mat-grid-tile>
+
+          <!-- Box Email -->
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Email</mat-label>
@@ -39,18 +47,8 @@
               </mat-hint>
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Role</mat-label>
-              <input matInput formControlName="role" />
-              <mat-hint style="color: red"
-                *ngIf="userForm.get('role')?.touched && userForm.get('role')?.errors?.['required']">
-                Este campo es requerido
-              </mat-hint>
-            </mat-form-field>
-          </mat-grid-tile>
-        </mat-grid-list>
-        <mat-grid-list cols="1" rowHeight="5:1">
+
+          <!-- Box Rol -->
           <mat-grid-tile>
             <mat-form-field appearance="fill">
               <mat-label>Rol</mat-label>
@@ -62,7 +60,9 @@
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
+
       </form>
+
     </div>
     <div mat-dialog-actions>
       <button mat-button color="warn" mat-dialog-close>Cancelar</button>

@@ -8,37 +8,43 @@ import { ViewUserDialogComponent } from 'src/app/features/users-table/view-user-
 import { User } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
 
+
+
+
+
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss']
 })
 export class UsersTableComponent implements OnInit {
-  long: number = 0
   usuarios: User[] = []
-  displayedColumns: string[] = ["nombre", "apellido", "email", "rol", "actions"]
+  long: number = 0
+  displayedColumns: string[] = [
+    "nombre", 
+    "apellido", 
+    "email", 
+    "rol", 
+    "actions",
+  ];
 
   dataSource! : MatTableDataSource<User>
   @ViewChild(MatTable) tabla!: MatTable<User>;
   
-  
   constructor(
+    private dialog: MatDialog,
     private usersService: UsersService,
-    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.usersService.get().subscribe((res) => { 
+    this.usersService.get().subscribe(
+      (res) => { 
       this.usuarios = res
       this.dataSource = new MatTableDataSource(this.usuarios)
       this.long = this.usuarios.length
-
     })
   }
   
-
-
-
 
   editar(elemento: User) {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {
@@ -47,13 +53,12 @@ export class UsersTableComponent implements OnInit {
       data: elemento,
     });
 
-    dialogRef.afterClosed().subscribe(resultado => {
+    dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
-        console.log(resultado)
         this.usersService.put(resultado).subscribe( (res) => {
           const indexToUpdate = res? this.usuarios.findIndex( (x) => x.id == res.id) : -1;
           if (indexToUpdate > -1) {
-            this.usuarios[indexToUpdate] = res
+            this.usuarios[indexToUpdate] = res;
             this.dataSource.data = this.usuarios
           } 
         });

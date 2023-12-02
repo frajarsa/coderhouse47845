@@ -11,9 +11,11 @@ export class UsersService {
   url: string = "http://localhost:3000/users"
 
 
-  constructor(
-    private http: HttpClient
-  ) {  }
+
+
+
+
+  constructor(private http: HttpClient) {  }
 
 
   get(): Observable<User[]> {
@@ -34,7 +36,6 @@ export class UsersService {
     }
 
   put(usuario: User): Observable<User> {
-    console.log(usuario)
     return this.http.put<User>(`${this.url}/${usuario.id}`, usuario)
   }
 
