@@ -70,6 +70,7 @@ export class CoursesTableComponent implements OnInit {
     })
   }
 
+
   eliminar(elemento: Curso) {
     const dialogRef = this.dialog.open(ConfirmarBorradoComponent, {
       width: "40%",
@@ -85,6 +86,8 @@ export class CoursesTableComponent implements OnInit {
       })
     })
   }
+
+
   agregar() {
     const dialogRef = this.dialog.open(NewCourseDialogComponent, {
       width: "60%",
@@ -101,6 +104,8 @@ export class CoursesTableComponent implements OnInit {
       }
     })
   }
+
+
   ver(datos: Element) {
     const dialogRef = this.dialog.open(ViewCoursesDialogComponent, {
       width: "60%",
@@ -118,7 +123,7 @@ export class CoursesTableComponent implements OnInit {
     })
   }
 
-
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

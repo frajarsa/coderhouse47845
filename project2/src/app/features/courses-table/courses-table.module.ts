@@ -14,7 +14,7 @@ import { NewCourseDialogComponent } from './new-course-dialog/new-course-dialog.
     EditCoursesDialogComponent,
     ViewCoursesDialogComponent,
     ConfirmarBorradoComponent,
-    NewCourseDialogComponent
+    NewCourseDialogComponent,
   ],
   imports: [
     CommonModule,
