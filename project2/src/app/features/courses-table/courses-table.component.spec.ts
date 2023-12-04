@@ -1,42 +1,66 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing'
 import { CoursesTableComponent } from './courses-table.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MaterialModule } from 'src/app/material/material.module';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NewCourseDialogComponent } from 'src/app/features/courses-table/new-course-dialog/new-course-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
+import { CoursesService } from 'src/app/services/courses.service';
+import { MockProvider } from 'ng-mocks'
 
 describe('CoursesTableComponent', () => {
   let component: CoursesTableComponent;
   let fixture: ComponentFixture<CoursesTableComponent>;
-  let newCourseDialog: NewCourseDialogComponent;
+  let dialog: MatDialog;
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CoursesTableComponent],
-      providers: [NewCourseDialogComponent],
-      imports: [MatDialogModule, BrowserAnimationsModule],
+      providers: [
+        MockProvider(CoursesService),
+        MockProvider(NewCourseDialogComponent),
+        {
+          provide: MatDialogRef,
+          useValue: {
+            afterClosed: () => ({ subscribe: () => {} }),
+          },
+        },
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+      ],
+      imports: [ 
+        MaterialModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatDialogModule
+       ]
     });
-    fixture = TestBed.createComponent(CoursesTableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-    newCourseDialog = TestBed.inject(NewCourseDialogComponent);
   });
 
-  it('should create', () => {
+  it('should create the courseTable component', () => {
+    fixture = TestBed.createComponent(CoursesTableComponent);
+    component = fixture.componentInstance;
+    
     expect(component).toBeTruthy();
   });
 
-  it('should open dialog when "agregar" is called', () => {
-    // Spy on the openDialog method of the dialogService
-    const agregarSpy = spyOn(newCourseDialog, 'actualizar').and.callThrough();
+  it('Should call dialog for new course when agregar is clicked', () => {
+    dialog = TestBed.inject(MatDialog)
+    fixture = TestBed.createComponent(CoursesTableComponent);
+    component = fixture.componentInstance;
 
-    // Trigger the click event on the button
-    const button = fixture.debugElement.query(By.css('button')).nativeElement;
-    button.click();
+    
+    const openDialogSpy = spyOn(dialog, 'open').and.returnValue({} as any);
+    component.agregar()
+    expect(openDialogSpy).toHaveBeenCalledWith(NewCourseDialogComponent)
 
-    // Check if the openDialog method was called
-    expect(agregarSpy).toHaveBeenCalled();
-  });
+
+
+
+
+
+  })
+
 
 });
+
