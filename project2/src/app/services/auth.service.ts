@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, firstValueFrom, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../interfaces/users';
 import { Router } from '@angular/router';
 import { BlockScrollStrategy } from '@angular/cdk/overlay';
@@ -10,23 +10,12 @@ import { BlockScrollStrategy } from '@angular/cdk/overlay';
 })
 
 export class AuthService {
-  private tokenKey = 'auth_token';
   url: string = "http://localhost:3000/users"
   public isAuthenticated: boolean = false
   public administrador: boolean = false
 
   constructor(private http: HttpClient) { }
 
-  userFound(email: string): boolean {
-    this.http.get<User[]>(`${this.url}?email=${email}`).subscribe(
-      (value) => {
-        console.log(value.length)
-        if (value.length > 0) this.isAuthenticated = true; this.isAuthenticated = false
-      }
-
-    );
-    return true
-  }
 
   sessionStorage(): string | null {
     return sessionStorage.getItem("admin")

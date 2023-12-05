@@ -23,18 +23,18 @@ export class CoursesTableComponent implements OnInit {
   cursos: Curso[] = []
   long: number = 0
   displayedColumns: string[] = [
-    'id', 
-    'nombre', 
-    'categoria', 
-    'fechaInicio', 
-    'fechaFinal', 
+    'id',
+    'nombre',
+    'categoria',
+    'fechaInicio',
+    'fechaFinal',
     'actions'];
   dataSource!: MatTableDataSource<Curso>;
   @ViewChild(MatTable) tabla!: MatTable<Curso>;
   constructor(
     private cursosService: CoursesService,
     private dialog: MatDialog,
-    ) {  }
+  ) { }
 
 
   ngOnInit(): void {
@@ -59,13 +59,13 @@ export class CoursesTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
         this.cursosService.put(resultado)
-        .subscribe( (res) => {
-          const indexToUpdate = res? this.cursos.findIndex( (x) => x.id == res.id) : -1
-          if (indexToUpdate > -1) {
-            this.cursos[indexToUpdate] = res
-            this.dataSource.data = this.cursos
-          } 
-        } )
+          .subscribe((res) => {
+            const indexToUpdate = res ? this.cursos.findIndex((x) => x.id == res.id) : -1
+            if (indexToUpdate > -1) {
+              this.cursos[indexToUpdate] = res
+              this.dataSource.data = this.cursos
+            }
+          })
       }
     })
   }
@@ -80,7 +80,7 @@ export class CoursesTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {
       this.cursosService.delete(res).subscribe(() => {
-        console.log(`Hemos borrado el curso con el id: ${res}`)
+        alert(`Hemos borrado el curso con el id: ${res}`)
         this.cursosService.get().subscribe((res) => this.dataSource.data = res);
         this.tabla.renderRows()
       })
@@ -123,7 +123,7 @@ export class CoursesTableComponent implements OnInit {
     })
   }
 
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

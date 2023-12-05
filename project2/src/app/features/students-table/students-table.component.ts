@@ -34,15 +34,15 @@ export class StudentsTableComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private alumnosService: AlumnosService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.alumnosService.get().subscribe(
       (res) => {
-      this.listaDeAlumnos = res;
-      this.dataSource = new MatTableDataSource(this.listaDeAlumnos);
-      this.long = this.listaDeAlumnos.length;
-    });
+        this.listaDeAlumnos = res;
+        this.dataSource = new MatTableDataSource(this.listaDeAlumnos);
+        this.long = this.listaDeAlumnos.length;
+      });
   }
 
 
@@ -56,7 +56,7 @@ export class StudentsTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
         this.alumnosService.put(resultado).subscribe((res) => {
-          const indexToUpdate = res? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
+          const indexToUpdate = res ? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
           if (indexToUpdate > -1) {
             this.listaDeAlumnos[indexToUpdate] = res;
             this.dataSource.data = this.listaDeAlumnos;
@@ -75,7 +75,7 @@ export class StudentsTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {
       this.alumnosService.delete(res).subscribe(() => {
-        console.log(`Hemos borrado el alumno con el id: ${res}`)
+        alert(`Hemos borrado el alumno con el id: ${res}`)
         this.alumnosService.get().subscribe((res) => this.dataSource.data = res);
         this.tabla.renderRows()
       })

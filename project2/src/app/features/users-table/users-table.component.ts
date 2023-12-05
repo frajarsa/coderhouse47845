@@ -21,30 +21,30 @@ export class UsersTableComponent implements OnInit {
   usuarios: User[] = []
   long: number = 0
   displayedColumns: string[] = [
-    "nombre", 
-    "apellido", 
-    "email", 
-    "rol", 
+    "nombre",
+    "apellido",
+    "email",
+    "rol",
     "actions",
   ];
 
-  dataSource! : MatTableDataSource<User>
+  dataSource!: MatTableDataSource<User>
   @ViewChild(MatTable) tabla!: MatTable<User>;
-  
+
   constructor(
     private dialog: MatDialog,
     private usersService: UsersService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.usersService.get().subscribe(
-      (res) => { 
-      this.usuarios = res
-      this.dataSource = new MatTableDataSource(this.usuarios)
-      this.long = this.usuarios.length
-    })
+      (res) => {
+        this.usuarios = res
+        this.dataSource = new MatTableDataSource(this.usuarios)
+        this.long = this.usuarios.length
+      })
   }
-  
+
 
   editar(elemento: User) {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {
@@ -55,12 +55,12 @@ export class UsersTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
-        this.usersService.put(resultado).subscribe( (res) => {
-          const indexToUpdate = res? this.usuarios.findIndex( (x) => x.id == res.id) : -1;
+        this.usersService.put(resultado).subscribe((res) => {
+          const indexToUpdate = res ? this.usuarios.findIndex((x) => x.id == res.id) : -1;
           if (indexToUpdate > -1) {
             this.usuarios[indexToUpdate] = res;
             this.dataSource.data = this.usuarios
-          } 
+          }
         });
       }
     });
@@ -75,7 +75,7 @@ export class UsersTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(res => {
       this.usersService.delete(res).subscribe(() => {
-        console.log(`Hemos borrado el curso con el id: ${res}`)
+        alert(`Hemos borrado el usuario con el id: ${res}`)
         this.usersService.get().subscribe((res) => this.dataSource.data = res);
         this.tabla.renderRows()
       })
