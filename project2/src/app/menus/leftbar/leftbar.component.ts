@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-leftbar',
@@ -7,6 +7,19 @@ import { Component } from '@angular/core';
 
 
 })
-export class LeftbarComponent {
-  //shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
+export class LeftbarComponent implements OnInit {
+
+  listOfModules: string[] = []
+  admin: string | null = ""
+
+  constructor
+    (
+  ) {
+    setTimeout(() => {
+      sessionStorage.getItem("admin") == "admin" ? this.listOfModules = ["students", "courses", "enrollments", "users"] : this.listOfModules = ["students", "courses", "enrollments"]
+    }, 100);
+  }
+
+  ngOnInit(): void {
+  }
 }

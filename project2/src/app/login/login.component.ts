@@ -17,6 +17,8 @@ import { map, pluck } from 'rxjs';
 export class LoginComponent {
   loginForm!: FormGroup;
   validado: boolean = false
+  admin: boolean = true
+
 
   constructor(
     private authService: AuthService,
@@ -30,16 +32,15 @@ export class LoginComponent {
     })
   }
 
-  login() {
-    this.authService.userFound(this.loginForm.get('email')?.value) 
-    this.authService.login(this.loginForm.get('email')?.value)
-    .subscribe( 
-      (value) => {
-        console.log(value.length)  
-        if(value.length >0)  return true ; return false
+  login(): void {
+    this.authService.login(this.loginForm.get('email')?.value).subscribe(
+      (res) => {
+        if (res.length > 0) {
+          this.authService.isAdmin(this.loginForm.get('email')?.value)
+          this.admin = this.authService.administrador
+          this.router.navigate(["/dashboard"])
+        }
       }
-     )
+    )
   }
-
-
 }

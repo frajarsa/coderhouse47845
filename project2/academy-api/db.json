@@ -123,11 +123,11 @@
   "users": [
     {
       "id": 1,
-      "email": "frajarsa@gmail.com",
+      "email": "f@f",
       "pw": "1234",
       "token": "9fsakasdjkdsfa6glkllaa",
-      "name": "Fran",
-      "lastName": "Ariza",
+      "name": "viki",
+      "lastName": "vik",
       "role": "admin"
     },
     {
