@@ -5,15 +5,11 @@ import { Curso } from 'src/app/interfaces/curso';
 @Component({
   selector: 'app-view-courses-dialog',
   templateUrl: './view-courses-dialog.component.html',
-  styleUrls: ['./view-courses-dialog.component.scss']
+  styleUrls: ['./view-courses-dialog.component.scss'],
 })
 export class ViewCoursesDialogComponent {
-
   constructor(
     private ref: MatDialogRef<ViewCoursesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Curso,
-  ) {
-
-  }
-
+    @Inject(MAT_DIALOG_DATA) public data: Curso
+  ) {}
 }

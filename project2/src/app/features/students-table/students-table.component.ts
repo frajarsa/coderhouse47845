@@ -33,18 +33,16 @@ export class StudentsTableComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private alumnosService: AlumnosService,
-  ) { }
+    private alumnosService: AlumnosService
+  ) {}
 
   ngOnInit(): void {
-    this.alumnosService.get().subscribe(
-      (res) => {
-        this.listaDeAlumnos = res;
-        this.dataSource = new MatTableDataSource(this.listaDeAlumnos);
-        this.long = this.listaDeAlumnos.length;
-      });
+    this.alumnosService.get().subscribe((res) => {
+      this.listaDeAlumnos = res;
+      this.dataSource = new MatTableDataSource(this.listaDeAlumnos);
+      this.long = this.listaDeAlumnos.length;
+    });
   }
-
 
   editar(elemento: Student) {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
@@ -56,7 +54,9 @@ export class StudentsTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
         this.alumnosService.put(resultado).subscribe((res) => {
-          const indexToUpdate = res ? this.listaDeAlumnos.findIndex((x) => x.id == res.id) : -1;
+          const indexToUpdate = res
+            ? this.listaDeAlumnos.findIndex((x) => x.id == res.id)
+            : -1;
           if (indexToUpdate > -1) {
             this.listaDeAlumnos[indexToUpdate] = res;
             this.dataSource.data = this.listaDeAlumnos;
@@ -68,52 +68,55 @@ export class StudentsTableComponent implements OnInit {
 
   eliminar(elemento: Student) {
     const dialogRef = this.dialog.open(ConfirmarBorradoStudentComponent, {
-      width: "40%",
-      enterAnimationDuration: "100ms",
-      data: elemento
+      width: '40%',
+      enterAnimationDuration: '100ms',
+      data: elemento,
     });
 
-    dialogRef.afterClosed().subscribe(res => {
+    dialogRef.afterClosed().subscribe((res) => {
       this.alumnosService.delete(res).subscribe(() => {
-        alert(`Hemos borrado el alumno con el id: ${res}`)
-        this.alumnosService.get().subscribe((res) => this.dataSource.data = res);
-        this.tabla.renderRows()
-      })
-    })
+        alert(`Hemos borrado el alumno con el id: ${res}`);
+        this.alumnosService
+          .get()
+          .subscribe((res) => (this.dataSource.data = res));
+        this.tabla.renderRows();
+      });
+    });
   }
   agregar() {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
-      width: "60%",
-      enterAnimationDuration: "500ms",
-
+      width: '60%',
+      enterAnimationDuration: '500ms',
     });
 
-    dialogRef.afterClosed().subscribe(resultado => {
+    dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
         this.alumnosService.post(resultado).subscribe((res) => {
-          this.listaDeAlumnos.push(res)
+          this.listaDeAlumnos.push(res);
           this.dataSource.data = this.listaDeAlumnos;
-        })
+          this.long = this.listaDeAlumnos.length;
+        });
       }
-    })
+    });
   }
   ver(datos: Element) {
     const dialogRef = this.dialog.open(ViewStudentDialogComponent, {
-      width: "60%",
-      enterAnimationDuration: "500ms",
-      data: datos
+      width: '60%',
+      enterAnimationDuration: '500ms',
+      data: datos,
     });
 
-    dialogRef.afterClosed().subscribe(resultado => {
+    dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado) {
-        const item = this.dataSource.data.find(course => course.id == resultado.id);
+        const item = this.dataSource.data.find(
+          (course) => course.id == resultado.id
+        );
         const index = this.dataSource.data.indexOf(item!);
         this.dataSource.data[index] = resultado;
         this.tabla.renderRows();
       }
-    })
+    });
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

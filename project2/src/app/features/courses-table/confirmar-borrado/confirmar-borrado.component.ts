@@ -9,19 +9,24 @@ import { CoursesService } from 'src/app/services/courses.service';
   styleUrls: ['./confirmar-borrado.component.scss'],
 })
 export class ConfirmarBorradoComponent implements OnInit {
-  courses!: Curso[]
+  courses!: Curso[];
 
-
-  constructor(private coursesService: CoursesService,
+  constructor(
+    private coursesService: CoursesService,
     private ref: MatDialogRef<ConfirmarBorradoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Curso,
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: Curso
+  ) {}
 
   ngOnInit() {
-    this.coursesService.get().subscribe((res) => { this.courses = res })
+    this.coursesService.get().subscribe((res) => {
+      this.courses = res;
+    });
   }
 
   closeDialogBorrar() {
     this.ref.close(this.data.id);
+    this.coursesService.get().subscribe((res) => {
+      this.courses = res;
+    });
   }
 }

@@ -7,6 +7,9 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angu
 import { NewCourseDialogComponent } from 'src/app/features/courses-table/new-course-dialog/new-course-dialog.component';
 import { CoursesService } from 'src/app/services/courses.service';
 import { MockProvider } from 'ng-mocks'
+import { By } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 
 describe('CoursesTableComponent', () => {
   let component: CoursesTableComponent;
@@ -15,10 +18,23 @@ describe('CoursesTableComponent', () => {
 
 
   beforeEach(() => {
+    
     TestBed.configureTestingModule({
       declarations: [CoursesTableComponent],
       providers: [
-        MockProvider(CoursesService),
+        provideAnimations(),
+        MockProvider(CoursesService, {
+          get: jasmine.createSpy().and.returnValue(of([
+            {
+              id: 1,
+              name: "test",
+              category:"",
+              fechaInicio:"",
+              fechaFinal:"",
+              classes: []
+            }
+          ]))
+        }),
         MockProvider(NewCourseDialogComponent),
         {
           provide: MatDialogRef,
@@ -44,23 +60,66 @@ describe('CoursesTableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should call dialog for new course when agregar is clicked', () => {
+  it('Should call dialog for new course when agregar is clicked', async () => {
     dialog = TestBed.inject(MatDialog)
     fixture = TestBed.createComponent(CoursesTableComponent);
     component = fixture.componentInstance;
-
-    
-    const openDialogSpy = spyOn(dialog, 'open').and.returnValue({} as any);
-    component.agregar()
-    expect(openDialogSpy).toHaveBeenCalledWith(NewCourseDialogComponent)
+    const openDialogSpy = spyOn(component.dialog, "open")
 
 
+    const button = fixture.debugElement.query(By.css('#btn-agregar'));
+    button.triggerEventHandler('click', null);
 
 
-
-
+    expect(openDialogSpy).toHaveBeenCalled()
   })
 
+  it('Should call dialog for edit course when editar is clicked', async () => {
+    dialog = TestBed.inject(MatDialog)
+    fixture = TestBed.createComponent(CoursesTableComponent);
+    component = fixture.componentInstance;
+    const openDialogSpy = spyOn(component.dialog, "open")
 
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    const button = fixture.debugElement.query(By.css('#btn-editar'));
+    button.triggerEventHandler('click', null);
+
+
+    expect(openDialogSpy).toHaveBeenCalled()
+  })
+
+  it('Should call dialog for eliminar course when eliminar is clicked', async () => {
+    dialog = TestBed.inject(MatDialog)
+    fixture = TestBed.createComponent(CoursesTableComponent);
+    component = fixture.componentInstance;
+    const openDialogSpy = spyOn(component.dialog, "open")
+
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    const button = fixture.debugElement.query(By.css('#btn-eliminar'));
+    button.triggerEventHandler('click', null);
+
+
+    expect(openDialogSpy).toHaveBeenCalled()
+  })
+
+  it('Should call dialog for ver course when ver is clicked', async () => {
+    dialog = TestBed.inject(MatDialog)
+    fixture = TestBed.createComponent(CoursesTableComponent);
+    component = fixture.componentInstance;
+    const openDialogSpy = spyOn(component.dialog, "open")
+
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    const button = fixture.debugElement.query(By.css('#btn-ver'));
+    button.triggerEventHandler('click', null);
+
+
+    expect(openDialogSpy).toHaveBeenCalled()
+  })
 });
 
